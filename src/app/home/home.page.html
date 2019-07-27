@@ -1,15 +1,42 @@
 <ion-header >
   <ion-toolbar class="ttt-ttt"  >
     <ion-title>
-      Presto Delivery2
-      hello world
-    </ion-title>
+Presto Delivery
+</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-button size="small" color="tertiary">Tertiary</ion-button>
+
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
-</ion-content>
+    <ion-infinite-scroll>
+
+<div class="card01">
+      <ion-card >
+        <div class="card02">
+      <ion-card >
+        <ion-item >
+            <ion-label>เลือกร้านอาหาร</ion-label>
+            <ion-select>
+              <ion-select-option selected >ร้านที่1</ion-select-option>
+              <ion-select-option>ร้านที่2</ion-select-option>
+              <ion-select-option>ร้านที่3</ion-select-option>
+              <ion-select-option>ร้านที่4</ion-select-option>
+              <ion-select-option>ร้านที่5</ion-select-option>
+              <ion-select-option >ร้านที่6</ion-select-option>
+              <ion-select-option>ร้านที่7</ion-select-option>
+              <ion-select-option>ร้านที่8</ion-select-option>
+              <ion-select-option>ร้านที่9</ion-select-option>
+              <ion-select-option>ร้านที่10</ion-select-option>
+              <ion-select-option>ร้านที่11</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-card>
+        </div>
+      </ion-card>
+    </div>
+
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="กำลังโหลดข้อมูล…">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-content>
