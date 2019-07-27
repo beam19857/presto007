@@ -23,10 +23,29 @@ export class ModelPagePage implements OnInit {
    possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890,./;'[]\=-)(*&^%$#@!~`";
    lengthOfCode:number = 40;
 
-   items2: AngularFireList<any> = null;
-   items4 : Observable<any[]>;
+   items2: AngularFireList<any> = null; //เชื่อมไฟเบส
+   items4 : Observable<any[]>; //เชื่อ UI
+   newTask = {name: ''}; //เพิ่มเข้าไฟเบส
+
+   baskets0 : AngularFireList<any> = null;
+   baskets1 : Observable<any[]>;
+   newBaskets = {UID : ''}
+
+   basketKey;
+   marketKey;
+
+  menuData;
+/* 
+      menu design -- > food amout , option amount , food opject , option opject ,0
 
 
+
+
+
+
+
+
+   */
 
 
   marketMenuList = [];
@@ -50,6 +69,8 @@ export class ModelPagePage implements OnInit {
   keyMenu;
   keyOption;
 
+
+
   
   constructor(
     private modelService : ModelsService,
@@ -65,6 +86,13 @@ export class ModelPagePage implements OnInit {
           changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
         )
       );
+
+      
+
+
+
+
+
       this.amountMenu = 0;
       this.amountOption = 0;
       this.ref.on('value',resp => {
@@ -77,12 +105,19 @@ export class ModelPagePage implements OnInit {
    }
 
   ngOnInit() {
+    this.marketname = this.navPara.get('markets');
+    this.userID = this.navPara.get('userID');
+    this.marketKey = this.navPara.get('marketKey');
+    this.basketKey = this.navPara.get('basketKey')
 
     this.keyMenu = this.makeKey(this.lengthOfCode,this.possible);
     console.log(this.keyMenu);
 
     this.keyOption = this.makeKey(this.lengthOfCode,this.possible);
     console.log(this.keyOption)
+
+    
+    
 
    
     
@@ -95,8 +130,7 @@ export class ModelPagePage implements OnInit {
     }
     this.food = {id:'',name:'',exFood:'',priceBase:'',markets:''}
    // this.option = {id:'',name:'',price:'',typefoods:'',markets:''}
-    this.marketname = this.navPara.get('markets');
-    this.userID = this.navPara.get('userID');
+    
     console.log(this.userID);
     this.modelService.getFoodBymarketname(this.marketname).subscribe(
       data => {
@@ -160,7 +194,7 @@ export class ModelPagePage implements OnInit {
       }
     
   closePage(){
-    this.createItem()
+    //this.createMenu();
     this.modelController.dismiss();
   }
 
@@ -225,10 +259,10 @@ export class ModelPagePage implements OnInit {
 }
 
 
-createItem()  {
-  
+createMenu(basketKey,marketKey,menu)  {
+  firebase.database().ref('baskets/'+basketKey+'/'+marketKey+'/'+menu)
 }
-  
+
 
   
   
