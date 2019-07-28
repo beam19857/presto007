@@ -1,15 +1,10 @@
 <ion-header >
   <ion-toolbar class="ttt-ttt"  >
     <ion-title>
-<<<<<<< HEAD
-      Presto Delivery2
-      hello world
+      Presto Delivery
+      
 
     </ion-title>
-=======
-Presto Delivery
-</ion-title>
->>>>>>> 25c464df9ad3a632849cd87c08abbd2b09d2c617
   </ion-toolbar>
 </ion-header>
 
@@ -23,17 +18,9 @@ Presto Delivery
         <ion-item >
             <ion-label>เลือกร้านอาหาร</ion-label>
             <ion-select>
-              <ion-select-option selected >ร้านที่1</ion-select-option>
-              <ion-select-option>ร้านที่2</ion-select-option>
-              <ion-select-option>ร้านที่3</ion-select-option>
-              <ion-select-option>ร้านที่4</ion-select-option>
-              <ion-select-option>ร้านที่5</ion-select-option>
-              <ion-select-option >ร้านที่6</ion-select-option>
-              <ion-select-option>ร้านที่7</ion-select-option>
-              <ion-select-option>ร้านที่8</ion-select-option>
-              <ion-select-option>ร้านที่9</ion-select-option>
-              <ion-select-option>ร้านที่10</ion-select-option>
-              <ion-select-option>ร้านที่11</ion-select-option>
+              
+              <ion-select-option *ngFor="let market of marketlist">{{market.name}}</ion-select-option>
+              
             </ion-select>
           </ion-item>
         </ion-card>
@@ -48,17 +35,8 @@ Presto Delivery
           <ion-item >
               <ion-label>เลือกร้านอาหาร</ion-label>
               <ion-select>
-                <ion-select-option selected >ร้านที่1</ion-select-option>
-                <ion-select-option>ร้านที่2</ion-select-option>
-                <ion-select-option>ร้านที่3</ion-select-option>
-                <ion-select-option>ร้านที่4</ion-select-option>
-                <ion-select-option>ร้านที่5</ion-select-option>
-                <ion-select-option >ร้านที่6</ion-select-option>
-                <ion-select-option>ร้านที่7</ion-select-option>
-                <ion-select-option>ร้านที่8</ion-select-option>
-                <ion-select-option>ร้านที่9</ion-select-option>
-                <ion-select-option>ร้านที่10</ion-select-option>
-                <ion-select-option>ร้านที่11</ion-select-option>
+                <ion-select-option *ngFor="let market of marketlist">{{market.name}}</ion-select-option>
+                
               </ion-select>
             </ion-item>
           </ion-card>
@@ -73,17 +51,8 @@ Presto Delivery
             <ion-item >
                 <ion-label>เลือกร้านอาหาร</ion-label>
                 <ion-select>
-                  <ion-select-option selected >ร้านที่1</ion-select-option>
-                  <ion-select-option>ร้านที่2</ion-select-option>
-                  <ion-select-option>ร้านที่3</ion-select-option>
-                  <ion-select-option>ร้านที่4</ion-select-option>
-                  <ion-select-option>ร้านที่5</ion-select-option>
-                  <ion-select-option >ร้านที่6</ion-select-option>
-                  <ion-select-option>ร้านที่7</ion-select-option>
-                  <ion-select-option>ร้านที่8</ion-select-option>
-                  <ion-select-option>ร้านที่9</ion-select-option>
-                  <ion-select-option>ร้านที่10</ion-select-option>
-                  <ion-select-option>ร้านที่11</ion-select-option>
+                  <ion-select-option *ngFor="let market of marketlist">{{market.name}}</ion-select-option>
+                  
                 </ion-select>
               </ion-item>
             </ion-card>
@@ -91,30 +60,7 @@ Presto Delivery
           </ion-card>
         </div>
 
-        <div class="card01">
-            <ion-card >
-              <div class="card02">
-            <ion-card >
-              <ion-item >
-                  <ion-label>เลือกร้านอาหาร</ion-label>
-                  <ion-select>
-                    <ion-select-option selected >ร้านที่1</ion-select-option>
-                    <ion-select-option>ร้านที่2</ion-select-option>
-                    <ion-select-option>ร้านที่3</ion-select-option>
-                    <ion-select-option>ร้านที่4</ion-select-option>
-                    <ion-select-option>ร้านที่5</ion-select-option>
-                    <ion-select-option >ร้านที่6</ion-select-option>
-                    <ion-select-option>ร้านที่7</ion-select-option>
-                    <ion-select-option>ร้านที่8</ion-select-option>
-                    <ion-select-option>ร้านที่9</ion-select-option>
-                    <ion-select-option>ร้านที่10</ion-select-option>
-                    <ion-select-option>ร้านที่11</ion-select-option>
-                  </ion-select>
-                </ion-item>
-              </ion-card>
-              </div>
-            </ion-card>
-          </div>
+        
       
 
 
