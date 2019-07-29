@@ -1,11 +1,45 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>ModelPage</ion-title>
+    <ion-title>
+      เลือกร้านอาหาร
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
+
+<ion-searchbar></ion-searchbar>
+<div>
+<div class="tc1">
+<ion-card  float-left >
+  <ion-item>
+    <ion-text>
+      กระเพราหมูสับพิเศษ
+    </ion-text>
+  </ion-item>
+</ion-card>
+</div>
+
+<div   class="tc2">
+    <ion-card float-right >
+      <ion-item>
+        <ion-text>
+          40
+        </ion-text>
+      </ion-item>
+    </ion-card>
+    </div>
+   </div>
+
+<ion-content>
+  <ion-item>
+   
+    <ion-button slot="end" fill="clear" (click)="showPicker()">select</ion-button>
+  
+</ion-item>
+</ion-content>
+
 <ion-content>
   <div class="btl">
-          <ion-button float-right (click) = "closePage()" > close page </ion-button>
+          <ion-button expand="full" (click) = "closePage()" > ยืนยัน </ion-button>
         </div>
 </ion-content>

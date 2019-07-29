@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {NavParams,ModalController} from '@ionic/angular';
+import {NavParams,ModalController, PickerController} from '@ionic/angular';
+ 
  
 @Component({
   selector: 'app-model-page',
@@ -8,7 +9,8 @@ import {NavParams,ModalController} from '@ionic/angular';
 })
 export class ModelPagePage implements OnInit {
 
-  constructor(private navPara:NavParams,private modelController : ModalController) { }
+
+  constructor(private navPara:NavParams,private modelController : ModalController,private pickerCtrl: PickerController) { }
 
   ngOnInit() {
   }
@@ -16,5 +18,12 @@ export class ModelPagePage implements OnInit {
   closePage(){
     this.modelController.dismiss();
   }
+  
+  
+
+  showpicker(){
+
+  }
 
 }
+

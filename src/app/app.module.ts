@@ -9,6 +9,7 @@ import { ModelPagePageModule } from './model-page/model-page.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],

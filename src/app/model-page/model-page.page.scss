@@ -1,10 +1,22 @@
 .btl{
     ion-button{
-        --background : #EC6C1F;
+        --background : #64EC82;
        --width : 50px;
        --height : 100px;
        --border-radius: 300px;
-       
-       
+    }
+  }  
+.tc1{
+    ion-card{
+        width : 190px;
+        height: 30;
     }
 }
+.tc2{
+    ion-card{
+        
+        width : 35px;
+        height: 45;
+    }
+}
+    
