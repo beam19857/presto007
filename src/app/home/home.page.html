@@ -18,15 +18,19 @@
         <ion-item >
             <ion-label>เลือกร้านอาหาร</ion-label>
             <ion-select>
-              
               <ion-select-option *ngFor="let market of marketlist">{{market.name}}</ion-select-option>
-              
             </ion-select>
           </ion-item>
         </ion-card>
+
+
+        <div class="btl">
+          <ion-button float-right (click) = "openModel1()" >เพิ่มอาหาร</ion-button>
+        </div>
         </div>
       </ion-card>
     </div>
+    
 
     <div class="card01">
         <ion-card >
@@ -40,6 +44,9 @@
               </ion-select>
             </ion-item>
           </ion-card>
+          <div class="btl">
+          <ion-button float-right (click) = "openModel2()" >เพิ่มอาหาร</ion-button>
+        </div>
           </div>
         </ion-card>
       </div>
@@ -56,9 +63,13 @@
                 </ion-select>
               </ion-item>
             </ion-card>
+            <div class="btl">
+          <ion-button float-right (click) = "openModel3()" >เพิ่มอาหาร</ion-button>
+        </div>
             </div>
           </ion-card>
         </div>
+        
 
         
       

@@ -1,5 +1,7 @@
 import { Component,OnInit } from '@angular/core';
-import { HomeServiceService } from './home-service.service'
+import {NavController,ModalController} from '@ionic/angular';
+import { HomeServiceService } from './home-service.service';
+import { ModelPagePage } from '../model-page/model-page.page';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +12,7 @@ export class HomePage  {
   market;
   marketlist = [];
 
-  constructor(private HomeService : HomeServiceService ) {}
+  constructor(private HomeService : HomeServiceService,private modelController : ModalController ) {}
 
 
   
@@ -29,9 +31,32 @@ export class HomePage  {
         }
         
       );
-
-      
   }
+ async openModel1(){
+   const model = await this.modelController.create({
+      component : ModelPagePage
+   });
+   
+   return await model.present();
+  }
+
+  async openModel2(){
+    const model = await this.modelController.create({
+       component : ModelPagePage
+    });
+    
+    return await model.present();
+   }
+
+   async openModel3(){
+    const model = await this.modelController.create({
+       component : ModelPagePage
+    });
+    
+    return await model.present();
+   }
+
+ 
 
 
 }
