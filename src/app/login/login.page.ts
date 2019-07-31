@@ -15,6 +15,6 @@ export class LoginPage implements OnInit {
 
 
     onLogin(){
-        this.nav.navigateForward('/home');
+        this.nav.navigateForward('/main');
     }
 }
