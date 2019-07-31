@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NavController,ModalController} from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -7,13 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPage implements OnInit {
 
-  constructor() { }
+  constructor(private nav : NavController) { }
 
   ngOnInit() {
   }
 
 
     onLogin(){
-      
+        this.nav.navigateForward('/home');
     }
 }
