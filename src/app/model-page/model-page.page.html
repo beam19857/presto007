@@ -1,42 +1,92 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="header01">
     <ion-title>
       เลือกร้านอาหาร
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-
 <ion-searchbar></ion-searchbar>
+
+<ion-card>
+<ion-grid>
+<ion-row>
+<ion-col>
+<div float-left >
+  <ion-label>
+   โอเลี้ยง
+</ion-label>
+</div>
+</ion-col>
+<ion-col>
+<div class="bp1">
+  <ion-button  size="small">-</ion-button>
+</div>
+</ion-col>
 <div>
-<div class="tc1">
-<ion-card  float-left >
-  <ion-item>
-    <ion-text>
-      กระเพราหมูสับพิเศษ
-    </ion-text>
-  </ion-item>
+ 
+  <ion-label>
+1
+</ion-label>
+
+</div>
+<ion-col>
+    <div class="bp2">
+      <ion-button float-right size="small">+</ion-button>
+    </div>
+    </ion-col>
+</ion-row>
+</ion-grid>
 </ion-card>
+
+<div>
+    <ion-card>
+        <ion-grid>
+        <ion-row>
+        <ion-col>
+        <div float-left >
+          <ion-label>
+           ไข่ดาว
+        </ion-label>
+        </div>
+        </ion-col>
+        <ion-col>
+        <div class="bp1">
+          <ion-button  size="small">-</ion-button>
+        </div>
+        </ion-col>
+        <div>
+         
+          <ion-label>
+        1
+        </ion-label>
+        
+        </div>
+        <ion-col>
+            <div class="bp2">
+              <ion-button float-right size="small">+</ion-button>
+            </div>
+            </ion-col>
+        </ion-row>
+        </ion-grid>
+        </ion-card>
 </div>
 
-<div   class="tc2">
-    <ion-card float-right >
+<div  >
       <ion-item>
-        <ion-text>
-          40
-        </ion-text>
-      </ion-item>
-    </ion-card>
-    </div>
-   </div>
+          <ion-label>ตัวเลือกเพิ่มเติม</ion-label>
+          <ion-select ok-text="ตกลง" cancel-text="ยกเลิก">
+            <ion-select-option value="dos">ไข่ดาว</ion-select-option>
+            <ion-select-option value="lunix">ไข่ต้ม</ion-select-option>
+            <ion-select-option value="mac7">ไข่เจียว</ion-select-option>
+            <ion-select-option value="mac8">ไข่ต่น</ion-select-option>
+          </ion-select>
+        </ion-item>
 
-<ion-content>
-  <ion-item>
-   
-    <ion-button slot="end" fill="clear" (click)="showPicker()">select</ion-button>
+</div>
   
-</ion-item>
-</ion-content>
+      
+
 
 <ion-content>
   <div class="btl">
