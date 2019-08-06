@@ -6,15 +6,29 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-searchbar></ion-searchbar>
+
+<ion-item>
+  <ion-label>เลือกอาหาร</ion-label>
+  
+
+    <ionic-selectable item-content 
+    [(ngModel)]="food" 
+    itemValueField="id" 
+    itemTextField="name" 
+    [items]="foodlist" 
+    [canSearch]="true"
+		 (onChange)="portChange($event)">
+
+  </ionic-selectable>
+</ion-item>
 
 <ion-card>
 <ion-grid>
 <ion-row>
 <ion-col>
 <div float-left >
-  <ion-label>
-   โอเลี้ยง
+  <ion-label [(ngModel)] = "foodname" name = "foodname" ngDefaultControl>
+   {{foodname.name}}
 </ion-label>
 </div>
 </ion-col>

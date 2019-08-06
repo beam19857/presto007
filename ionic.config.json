@@ -1,5 +1,7 @@
 {
   "name": "presto001",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

@@ -8,7 +8,9 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { ModelPagePageModule } from './model-page/model-page.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-
+import { FormsModule } from '@angular/forms';
+import {SelectSearchableModule} from 'ionic-select-searchable'
+import { IonicSelectableModule } from 'ionic-selectable';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,7 +19,10 @@ import { AppRoutingModule } from './app-routing.module';
     IonicModule.forRoot(), 
     AppRoutingModule,
     HttpClientModule,
-    ModelPagePageModule
+    ModelPagePageModule,
+    FormsModule,
+    SelectSearchableModule,
+    IonicSelectableModule
   
   
   ],

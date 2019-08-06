@@ -20,8 +20,8 @@
       <ion-card >
         <ion-item >
             <ion-label>เลือกร้านอาหาร</ion-label>
-            <ion-select>
-              <ion-select-option *ngFor="let market of marketlist">{{market.name}}</ion-select-option>
+            <ion-select [(ngModel)]="market1" name="market1">
+              <ion-select-option *ngFor="let market of marketlist1" value = "{{market.name}}">{{market.name}}</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-card>
@@ -66,8 +66,8 @@
         <ion-card >
           <ion-item >
               <ion-label>เลือกร้านอาหาร</ion-label>
-              <ion-select>
-                <ion-select-option *ngFor="let market of marketlist">{{market.name}}</ion-select-option>
+              <ion-select [(ngModel)] = "market2" name = "market2">
+                <ion-select-option *ngFor="let market of marketlist1" value = "{{market.name}}">{{market.name}}</ion-select-option>
                 
               </ion-select>
             </ion-item>
@@ -112,8 +112,8 @@
           <ion-card >
             <ion-item >
                 <ion-label>เลือกร้านอาหาร</ion-label>
-                <ion-select>
-                  <ion-select-option *ngFor="let market of marketlist">{{market.name}}</ion-select-option>
+                <ion-select [(ngModel)] = "market3" name = "market3">
+                  <ion-select-option *ngFor="let market of marketlist1" value = "{{market.name}}">{{market.name}}</ion-select-option>
                   
                 </ion-select>
               </ion-item>
@@ -147,6 +147,7 @@
                           </ion-label>
             <div class="btl">
           <ion-button  expand="full"  (click) = "openModel3()" >เพิ่มอาหาร</ion-button>
+          
         </div>
             </div>
           </ion-card>
@@ -166,4 +167,5 @@
 
   <div class="btk">
     <ion-button expand="full" color="secondary">ยืนยัน</ion-button>
+    
   </div>
