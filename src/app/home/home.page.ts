@@ -2,6 +2,11 @@ import { Component,OnInit } from '@angular/core';
 import {NavController,ModalController} from '@ionic/angular';
 import { HomeServiceService } from './home-service.service';
 import { ModelPagePage } from '../model-page/model-page.page';
+import { ModelselectPage } from '../modelselect/modelselect.page';
+import * as firebase from 'firebase';
+
+
+
 
 
 @Component({
@@ -9,15 +14,22 @@ import { ModelPagePage } from '../model-page/model-page.page';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
+
+
 export class HomePage  {
+  
   market1;
   market2;
   market3;
   marketlist1 = [];
+ 
 
 
   constructor(private HomeService : HomeServiceService,private modelController : ModalController ) {}
+    
+   
 
+  
 
   
   ngOnInit(){
@@ -58,9 +70,11 @@ export class HomePage  {
         
       );
   }
+
+  
  async openModel1(){
    const model = await this.modelController.create({
-      component : ModelPagePage , 
+      component : ModelselectPage , 
       componentProps : {
       markets : this.market1
       }
@@ -71,7 +85,7 @@ export class HomePage  {
 
   async openModel2(){
     const model = await this.modelController.create({
-       component : ModelPagePage,
+       component : ModelselectPage,
        componentProps : {
         markets : this.market2
         }
@@ -82,7 +96,7 @@ export class HomePage  {
 
    async openModel3(){
     const model = await this.modelController.create({
-       component : ModelPagePage,
+       component : ModelselectPage,
        componentProps : {
         markets : this.market3
         }

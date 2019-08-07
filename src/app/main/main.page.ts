@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NavController,ModalController} from '@ionic/angular';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'app-main',
@@ -8,7 +9,7 @@ import {NavController,ModalController} from '@ionic/angular';
 })
 export class MainPage implements OnInit {
 
-  constructor(private nav : NavController) { }
+  constructor(private nav : NavController,private fAuth : AngularFireAuth) { }
 
   ngOnInit() {
   }
@@ -24,7 +25,7 @@ export class MainPage implements OnInit {
 
   }
   onLogout(){
-    this.nav.navigateForward('/login') ;
+    this.fAuth.auth.signOut();
 
   }
 

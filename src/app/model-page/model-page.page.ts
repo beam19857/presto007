@@ -5,10 +5,7 @@ import { IonicSelectableComponent } from 'ionic-selectable';
 import { ModelsService } from './models.service';
 
 
-class Port {
-  public id: number;
-  public name: string;
-}
+
  
  
 @Component({
@@ -17,8 +14,7 @@ class Port {
   styleUrls: ['./model-page.page.scss'],
 })
 export class ModelPagePage implements OnInit {
-  ports: Port[];
-  port: Port;
+  
   marketname ;
   foodlist = [];
   food ;
@@ -27,12 +23,7 @@ export class ModelPagePage implements OnInit {
 
   
   constructor(private modelService : ModelsService,private navPara:NavParams,private modelController : ModalController,private pickerCtrl: PickerController) {
-    this.ports = [
-      { id: 1, name: 'Tokai' },
-      { id: 2, name: 'Vladivostok' },
-      { id: 3, name: 'Navlakhi' }
-    ];
-
+    
    }
 
   ngOnInit() {
@@ -68,7 +59,7 @@ export class ModelPagePage implements OnInit {
     value: any 
   }) {
     console.log('food:', event.value);
-   
+    console.log(this.marketname);
     this.foodname.name = event.value.name;
 
   }

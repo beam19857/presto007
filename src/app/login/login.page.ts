@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {NavController,ModalController} from '@ionic/angular';
+import { AngularFireAuth } from 'angularfire2/auth';
+
+  export class User {
+    email: string;
+    password: string;
+}
 
 @Component({
   selector: 'app-login',
@@ -8,13 +14,32 @@ import {NavController,ModalController} from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private nav : NavController) { }
+  public user:User = new User();
+
+  constructor(private nav : NavController,public fAuth: AngularFireAuth) { }
 
   ngOnInit() {
   }
 
 
-    onLogin(){
-        this.nav.navigateForward('/main');
+  async onlogin() {
+    try {
+      var r = await this.fAuth.auth.signInWithEmailAndPassword(
+        this.user.email,
+        this.user.password
+      );
+      if (r) {
+        console.log("Successfully logged in!");
+        this.nav.navigateRoot('/main')
+      }
+
+    } catch (err) {
+      console.error(err);
     }
+  }
+
+  onRegister(){
+    this.nav.navigateForward('/register2') ;
+
+  }
 }
