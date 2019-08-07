@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'main', loadChildren: './main/main.module#MainPageModule' },
   { path: 'modelselect', loadChildren: './modelselect/modelselect.module#ModelselectPageModule' },
   { path: 'register', loadChildren: './register/register.module#RegisterPageModule' },  { path: 'register2', loadChildren: './register2/register2.module#Register2PageModule' },
+  { path: 'bill', loadChildren: './bill/bill.module#BillPageModule' },
 
 
 
