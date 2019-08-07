@@ -26,7 +26,7 @@ export class MainPage implements OnInit {
   }
   onLogout(){
     this.fAuth.auth.signOut();
-
+    this.nav.navigateBack('/login')
   }
 
 }

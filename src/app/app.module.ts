@@ -16,7 +16,7 @@ import {AngularFireModule} from 'angularfire2'
 import {AngularFireAuthModule} from 'angularfire2/auth'
 import { LoginPageModule } from './login/login.module';
 import { HttpModule } from '@angular/http';
-import { RegisterPageModule } from './register/register.module';
+
 
 
 

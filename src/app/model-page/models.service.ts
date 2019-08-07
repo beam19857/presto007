@@ -17,6 +17,10 @@ export class ModelsService {
     return this.http.get(this.baseURL+'/food?search='+marketname,{headers:this.httpHeader});
   }
 
+  getOptionByMarketName(marketname):Observable<any>{
+    return this.http.get(this.baseURL+'/option?search='+marketname,{headers:this.httpHeader});
+  }
+
 }
 
 

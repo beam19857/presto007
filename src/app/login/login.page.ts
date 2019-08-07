@@ -34,6 +34,7 @@ export class LoginPage implements OnInit {
       }
 
     } catch (err) {
+      alert("email or password not found");
       console.error(err);
     }
   }

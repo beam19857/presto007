@@ -9,7 +9,6 @@
 
 <ion-item>
   <ion-label>เลือกอาหาร</ion-label>
-  
 
     <ionic-selectable item-content 
     [(ngModel)]="food" 
@@ -18,10 +17,23 @@
     [items]="foodlist" 
     [canSearch]="true"
 		 (onChange)="portChange($event)">
+  </ionic-selectable>
+</ion-item>
+<div  >
+     <ion-item>
+  <ion-label>เลือก Option</ion-label>
 
+    <ionic-selectable item-content 
+    [(ngModel)]="option" 
+    itemValueField="id" 
+    itemTextField="name" 
+    [items]="optionFoodLists" 
+    [canSearch]="true"
+		(onChange)="portChange2($event)">
   </ionic-selectable>
 </ion-item>
 
+</div>
 <ion-card>
 <ion-grid>
 <ion-row>
@@ -86,18 +98,7 @@
         </ion-card>
 </div>
 
-<div  >
-      <ion-item>
-          <ion-label>ตัวเลือกเพิ่มเติม</ion-label>
-          <ion-select ok-text="ตกลง" cancel-text="ยกเลิก">
-            <ion-select-option value="dos">ไข่ดาว</ion-select-option>
-            <ion-select-option value="lunix">ไข่ต้ม</ion-select-option>
-            <ion-select-option value="mac7">ไข่เจียว</ion-select-option>
-            <ion-select-option value="mac8">ไข่ต่น</ion-select-option>
-          </ion-select>
-        </ion-item>
 
-</div>
   
       
 
