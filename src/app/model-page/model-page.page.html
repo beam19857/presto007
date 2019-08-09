@@ -19,21 +19,23 @@
 		 (onChange)="portChange($event)">
   </ionic-selectable>
 </ion-item>
-<div  >
+
+
+
      <ion-item>
   <ion-label>เลือก Option</ion-label>
 
     <ionic-selectable item-content 
     [(ngModel)]="option" 
-    itemValueField="id" 
+    itemValueField="name" 
     itemTextField="name" 
     [items]="optionFoodLists" 
     [canSearch]="true"
-		(onChange)="portChange2($event)">
+		 (onChange)="portChange2($event)">
   </ionic-selectable>
 </ion-item>
 
-</div>
+
 <ion-card>
 <ion-grid>
 <ion-row>
@@ -46,19 +48,19 @@
 </ion-col>
 <ion-col>
 <div class="bp1">
-  <ion-button  size="small">-</ion-button>
+  <ion-button (click) = "onDecreaseMenu()"  size="small">-</ion-button>
 </div>
 </ion-col>
 <div>
  
-  <ion-label>
-1
+  <ion-label [(ngModel)] = "amountMenu" name = "amountMenu" ngDefaultControl>
+    {{amountMenu}}
 </ion-label>
 
 </div>
 <ion-col>
     <div class="bp2">
-      <ion-button float-right size="small">+</ion-button>
+      <ion-button (click) = "onIncreaseMenu()" float-right size="small">+</ion-button>
     </div>
     </ion-col>
 </ion-row>
@@ -71,26 +73,26 @@
         <ion-row>
         <ion-col>
         <div float-left >
-          <ion-label>
-           ไข่ดาว
+          <ion-label [(ngModel)] = "optionname" name = "optionname" ngDefaultControl>
+           {{optionname.name}}
         </ion-label>
         </div>
         </ion-col>
         <ion-col>
         <div class="bp1">
-          <ion-button  size="small">-</ion-button>
+          <ion-button (click) = "onDecreaseOption()"  size="small">-</ion-button>
         </div>
         </ion-col>
         <div>
          
-          <ion-label>
-        1
+          <ion-label [(ngModel)] = "amountOption" name = "amountOption"  ngDefaultControl>
+          {{amountOption}}
         </ion-label>
         
         </div>
         <ion-col>
             <div class="bp2">
-              <ion-button float-right size="small">+</ion-button>
+              <ion-button (click) = "onIncreaseOption()" float-right size="small">+</ion-button>
             </div>
             </ion-col>
         </ion-row>

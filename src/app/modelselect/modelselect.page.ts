@@ -20,10 +20,9 @@ export class ModelselectPage implements OnInit {
     this.marketname = this.navPara.get('markets');
   }
 
-  openFoodPage(){
+  openFoodPage(){  
     this.openModel1()
     this.modelController.dismiss();
-
   }
   openDrinkPage(){
     this.openModel1()
