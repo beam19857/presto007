@@ -8,10 +8,13 @@ import { AngularFireAuth } from 'angularfire2/auth';
   styleUrls: ['./main.page.scss'],
 })
 export class MainPage implements OnInit {
+  
+  
 
   constructor(private nav : NavController,private fAuth : AngularFireAuth) { }
 
   ngOnInit() {
+
   }
 
   onAddorder(){

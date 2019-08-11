@@ -11,10 +11,10 @@
   <ion-label>เลือกอาหาร</ion-label>
 
     <ionic-selectable item-content 
-    [(ngModel)]="food" 
-    itemValueField="id" 
+    [(ngModel)]="marketMenu" 
+    itemValueField="name" 
     itemTextField="name" 
-    [items]="foodlist" 
+    [items]="marketMenuList" 
     [canSearch]="true"
 		 (onChange)="portChange($event)">
   </ionic-selectable>

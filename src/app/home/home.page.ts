@@ -74,7 +74,7 @@ export class HomePage  {
   
  async openModel1(){
    const model = await this.modelController.create({
-      component : ModelselectPage , 
+      component : ModelPagePage , 
       componentProps : {
       markets : this.market1
       }
