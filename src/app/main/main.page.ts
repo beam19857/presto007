@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {NavController,ModalController} from '@ionic/angular';
 import { AngularFireAuth } from 'angularfire2/auth';
+import {ActivatedRoute} from '@angular/router';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -9,16 +11,18 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class MainPage implements OnInit {
   
-  
+  dataUID = 'a' ;
 
-  constructor(private nav : NavController,private fAuth : AngularFireAuth) { }
+  constructor(private Rout : Router,private activateRoute:ActivatedRoute,private nav : NavController,private fAuth : AngularFireAuth) { }
 
   ngOnInit() {
-
+      this.dataUID = this.activateRoute.snapshot.paramMap.get('myid');
+      console.log(this.dataUID);
   }
 
   onAddorder(){
-    this.nav.navigateForward('/home');
+    this.Rout.navigate(['home',this.dataUID]);
+    
   }
 
   onOrderList(){

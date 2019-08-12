@@ -6,8 +6,10 @@ import { ModelsService } from './models.service';
 import * as firebase from 'firebase';
 import { snapshotToArray } from '../data/user';
 
-export type Int = number & { __int__: void };
-export const roundToInt = (num: number): Int => Math.round(num) as Int;
+export class menu {
+
+
+}
 
  
  
@@ -17,6 +19,8 @@ export const roundToInt = (num: number): Int => Math.round(num) as Int;
   styleUrls: ['./model-page.page.scss'],
 })
 export class ModelPagePage implements OnInit {
+   possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890,./;'[]\=-)(*&^%$#@!~`";
+   lengthOfCode:number = 40;
   marketMenuList = [];
   marketMenu ;
   optionFoodLists = [];
@@ -31,9 +35,12 @@ export class ModelPagePage implements OnInit {
   foodname  ;
   optionname;
   items = [];
-  ref = firebase.database().ref('item');
+  ref = firebase.database().ref();
   amountMenu:number  ;
   amountOption : number ;
+  userID ;
+  keyMenu;
+  keyOption;
 
   
   constructor(
@@ -54,6 +61,14 @@ export class ModelPagePage implements OnInit {
    }
 
   ngOnInit() {
+
+    this.keyMenu = this.makeKey(this.lengthOfCode,this.possible);
+    console.log(this.keyMenu);
+
+    this.keyOption = this.makeKey(this.lengthOfCode,this.possible);
+    console.log(this.keyOption)
+
+    
     
     this.foodname = {
       name : '',
@@ -64,6 +79,8 @@ export class ModelPagePage implements OnInit {
     this.food = {id:'',name:'',exFood:'',priceBase:'',markets:''}
    // this.option = {id:'',name:'',price:'',typefoods:'',markets:''}
     this.marketname = this.navPara.get('markets');
+    this.userID = this.navPara.get('userID');
+    console.log(this.userID);
     this.modelService.getFoodBymarketname(this.marketname).subscribe(
       data => {
         console.log("get Data");
@@ -180,7 +197,16 @@ export class ModelPagePage implements OnInit {
 
 
     }
+ makeKey(lengthOfCode: number, possible: string) {
+  
+  let text = "";
+  for (let i = 0; i < lengthOfCode; i++) {
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+    return text;
+}
 
+//makeRandom(lengthOfCode, possible);
   
   
   

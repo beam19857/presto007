@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {NavController,ModalController} from '@ionic/angular';
 import { AngularFireAuth } from 'angularfire2/auth';
+import {Router} from '@angular/router';
+import * as firebase from 'firebase';
 
   export class User {
     email: string;
@@ -16,11 +18,13 @@ export class LoginPage implements OnInit {
 
   public user:User = new User();
 
-  constructor(private nav : NavController,public fAuth: AngularFireAuth) { }
+  constructor(private Rout : Router,private nav : NavController,public fAuth: AngularFireAuth) { }
 
   ngOnInit() {
   }
-
+ 
+  data;
+  
 
   async onlogin() {
     try {
@@ -30,7 +34,9 @@ export class LoginPage implements OnInit {
       );
       if (r) {
         console.log("Successfully logged in!");
-        this.nav.navigateRoot('/main')
+        console.log(r.user.uid);
+        this.data = r.user.uid;
+        this.Rout.navigate(['main',this.data]);
       }
 
     } catch (err) {
@@ -43,4 +49,8 @@ export class LoginPage implements OnInit {
     this.nav.navigateForward('/register2') ;
 
   }
+
+
+
+   
 }

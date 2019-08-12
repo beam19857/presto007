@@ -4,6 +4,8 @@ import { HomeServiceService } from './home-service.service';
 import { ModelPagePage } from '../model-page/model-page.page';
 import { ModelselectPage } from '../modelselect/modelselect.page';
 import * as firebase from 'firebase';
+import { Router } from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 
 
 
@@ -25,14 +27,19 @@ export class HomePage  {
  
 
 
-  constructor(private HomeService : HomeServiceService,private modelController : ModalController ) {}
+  constructor(private activateRoute:ActivatedRoute,private Rout : Router,private HomeService : HomeServiceService,private modelController : ModalController ) {}
     
+  dataUID ;
    
 
   
 
   
   ngOnInit(){
+
+    this.dataUID = this.activateRoute.snapshot.paramMap.get('myids');
+      console.log(this.dataUID);
+
       this.market1 = {
         id:'',
         location:'',
@@ -76,7 +83,8 @@ export class HomePage  {
    const model = await this.modelController.create({
       component : ModelPagePage , 
       componentProps : {
-      markets : this.market1
+      markets : this.market1,
+      userID :  this.dataUID
       }
    });
    
@@ -85,9 +93,10 @@ export class HomePage  {
 
   async openModel2(){
     const model = await this.modelController.create({
-       component : ModelselectPage,
+       component : ModelPagePage,
        componentProps : {
-        markets : this.market2
+        markets : this.market2,
+        userID :  this.dataUID
         }
     });
     
@@ -96,9 +105,10 @@ export class HomePage  {
 
    async openModel3(){
     const model = await this.modelController.create({
-       component : ModelselectPage,
+       component : ModelPagePage,
        componentProps : {
-        markets : this.market3
+        markets : this.market3,
+        userID :  this.dataUID
         }
     });
     
