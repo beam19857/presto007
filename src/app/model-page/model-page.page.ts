@@ -5,11 +5,12 @@ import { IonicSelectableComponent } from 'ionic-selectable';
 import { ModelsService } from './models.service';
 import * as firebase from 'firebase';
 import { snapshotToArray } from '../data/user';
+import {AngularFireDatabase,AngularFireList} from 'angularfire2/database'
+import {AngularFirestore} from 'angularfire2/firestore';
+import { Observable } from 'rxjs';
+import {map} from 'rxjs/operators'
 
-export class menu {
 
-
-}
 
  
  
@@ -21,6 +22,13 @@ export class menu {
 export class ModelPagePage implements OnInit {
    possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890,./;'[]\=-)(*&^%$#@!~`";
    lengthOfCode:number = 40;
+
+   items2: AngularFireList<any> = null;
+   items4 : Observable<any[]>;
+
+
+
+
   marketMenuList = [];
   marketMenu ;
   optionFoodLists = [];
@@ -47,8 +55,16 @@ export class ModelPagePage implements OnInit {
     private modelService : ModelsService,
     private navPara:NavParams,
     private modelController : ModalController,
-    private pickerCtrl: PickerController
+    private pickerCtrl: PickerController,
+    private db: AngularFireDatabase,
+    private aft :AngularFirestore
     ) {
+      this.items2 = db.list('/tasks');
+      this.items4 = this.items2.snapshotChanges().pipe(
+        map(changes => 
+          changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+        )
+      );
       this.amountMenu = 0;
       this.amountOption = 0;
       this.ref.on('value',resp => {
@@ -68,6 +84,7 @@ export class ModelPagePage implements OnInit {
     this.keyOption = this.makeKey(this.lengthOfCode,this.possible);
     console.log(this.keyOption)
 
+   
     
     
     this.foodname = {
@@ -143,6 +160,7 @@ export class ModelPagePage implements OnInit {
       }
     
   closePage(){
+    this.createItem()
     this.modelController.dismiss();
   }
 
@@ -206,8 +224,12 @@ export class ModelPagePage implements OnInit {
     return text;
 }
 
-//makeRandom(lengthOfCode, possible);
+
+createItem()  {
   
+}
+  
+
   
   
 
