@@ -101,7 +101,15 @@
 </div>
 
 
-  
+  <ion-list>
+
+    <ion-item *ngFor="let task of items4 | async">
+
+      <input type="text" [(ngModel)]="task.name">
+
+    </ion-item>
+
+  </ion-list>
       
 
 
