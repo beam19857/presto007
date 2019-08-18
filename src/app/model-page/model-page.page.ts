@@ -11,7 +11,41 @@ export class menu {
 
 }
 
- 
+//================================================================================== test
+export interface FOODSxOPTIONS {
+  opName: string;
+  opAmount: number;
+  opPrice: number;
+  foodName: string;
+  foodAmount: number
+  foodPrice: number;
+  totalprice: number;
+}  
+export interface FOODS { //ลบ interace ได้ถ้าไม่ใช้
+  id: any;
+  type: string;
+  name: string;
+  price: number;
+}
+export interface TOPPINGS { //ลบ interface ได้ถ้าไม่ใช้
+  id: any;
+  type: string;
+  name: string;
+  price: number;
+}
+
+const FOOD_DATA: FOODS[] = [ //ลบ constance ได้ถ้าไม่ใช้
+  {id: 0, type: 'food', name: 'A', price: 30},
+  {id: 1, type: 'food', name: 'B', price: 35},
+  {id: 2, type: 'food', name: 'C', price: 40},
+  {id: 3, type: 'food', name: 'D', price: 50},
+  {id: 4, type: 'food', name: 'E', price: 60},
+];
+const TOPPING_DATA: FOODS[] = [
+  {id: 0, type: 'food', name: 'X', price: 5},
+  {id: 1, type: 'food', name: 'Y', price: 10},
+];
+//================================================================================== test
  
 @Component({
   selector: 'app-model-page',
@@ -19,11 +53,15 @@ export class menu {
   styleUrls: ['./model-page.page.scss'],
 })
 export class ModelPagePage implements OnInit {
+//================================================================================== test
+  FoodsXOptions: Array<FOODSxOPTIONS>  = [];
+  totalPrice: number = 0;
+//================================================================================== test
    possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890,./;'[]\=-)(*&^%$#@!~`";
    lengthOfCode:number = 40;
   marketMenuList = [];
   marketMenu ;
-  optionFoodLists = [];
+  optionFoodLists = []; 
   optionFoodList = [];
   optionDrinkList = [];
   optionFood ;
@@ -67,9 +105,9 @@ export class ModelPagePage implements OnInit {
 
     this.keyOption = this.makeKey(this.lengthOfCode,this.possible);
     console.log(this.keyOption)
+    
 
-    
-    
+
     this.foodname = {
       name : '',
   }
@@ -144,7 +182,27 @@ export class ModelPagePage implements OnInit {
     
   closePage(){
     this.modelController.dismiss();
+// ======================================================= test
+    this.CalPrice(this.totalPrice)
+// ======================================================= test
   }
+
+//================================================================================== test
+  CalPrice(totalPrice: number){
+    totalPrice += (this.marketMenu.price + (this.option.price * this.amountOption)) * this.amountMenu;
+    this.FoodsXOptions.push({
+      opName: this.optionname,
+      opAmount: this.amountOption,
+      opPrice: this.option.price,
+      foodName: this.foodname,
+      foodAmount: this.amountMenu,
+      foodPrice: this.marketMenu.price,
+      totalprice: totalPrice
+    })
+    console.table(this.FoodsXOptions)
+    return totalPrice
+  }
+//================================================================================== test
 
   portChange(event: {
     component: IonicSelectableComponent,
