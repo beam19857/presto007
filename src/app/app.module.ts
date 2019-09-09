@@ -16,6 +16,8 @@ import {AngularFireModule} from 'angularfire2'
 import {AngularFireAuthModule} from 'angularfire2/auth'
 import { LoginPageModule } from './login/login.module';
 import { HttpModule } from '@angular/http';
+import {AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 
 
@@ -46,7 +48,7 @@ const config = {
     AngularFireModule.initializeApp(config),
     LoginPageModule,
     HttpModule,
-    
+    AngularFireDatabaseModule,
     
   
   
@@ -54,6 +56,7 @@ const config = {
   providers: [
     StatusBar,
     SplashScreen,
+    AngularFirestore,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
