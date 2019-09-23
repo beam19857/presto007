@@ -1,10 +1,15 @@
 <ion-header >
   <ion-toolbar class="ttt-ttt"  >
     <ion-title>
-Presto Delivery
-</ion-title>
+      Presto Delivery
+      
+
+    </ion-title>
   </ion-toolbar>
 </ion-header>
+
+
+
 
 <ion-content>
     <ion-infinite-scroll>
@@ -15,24 +20,45 @@ Presto Delivery
       <ion-card >
         <ion-item >
             <ion-label>เลือกร้านอาหาร</ion-label>
-            <ion-select>
-              <ion-select-option selected >ร้านที่1</ion-select-option>
-              <ion-select-option>ร้านที่2</ion-select-option>
-              <ion-select-option>ร้านที่3</ion-select-option>
-              <ion-select-option>ร้านที่4</ion-select-option>
-              <ion-select-option>ร้านที่5</ion-select-option>
-              <ion-select-option >ร้านที่6</ion-select-option>
-              <ion-select-option>ร้านที่7</ion-select-option>
-              <ion-select-option>ร้านที่8</ion-select-option>
-              <ion-select-option>ร้านที่9</ion-select-option>
-              <ion-select-option>ร้านที่10</ion-select-option>
-              <ion-select-option>ร้านที่11</ion-select-option>
+            <ion-select [(ngModel)]="market1" name="market1">
+              <ion-select-option *ngFor="let market of marketlist1" value = "{{market.name}}">{{market.name}}</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-card>
+        <ion-label>
+          กระเพรา
+        </ion-label>
+        <br /> 
+        <ion-label>
+            กระเพรา
+          </ion-label>
+          <br /> 
+          <ion-label>
+              กระเพรา
+            </ion-label>
+            <br /> 
+            <ion-label>
+                กระเพรา
+              </ion-label>
+              <br /> 
+              <ion-label>
+                  กระเพรา
+                </ion-label>
+                <br /> 
+                <ion-label>
+                    กระเพรา
+                  </ion-label>
+                  <br /> 
+                  <ion-label>
+                      กระเพรา
+                    </ion-label>
+        <div class="btl">
+          <ion-button expand="full" (click) = "openModel1()" >เพิ่มอาหาร</ion-button>
+        </div>
         </div>
       </ion-card>
     </div>
+    
 
     <div class="card01">
         <ion-card >
@@ -40,21 +66,42 @@ Presto Delivery
         <ion-card >
           <ion-item >
               <ion-label>เลือกร้านอาหาร</ion-label>
-              <ion-select>
-                <ion-select-option selected >ร้านที่1</ion-select-option>
-                <ion-select-option>ร้านที่2</ion-select-option>
-                <ion-select-option>ร้านที่3</ion-select-option>
-                <ion-select-option>ร้านที่4</ion-select-option>
-                <ion-select-option>ร้านที่5</ion-select-option>
-                <ion-select-option >ร้านที่6</ion-select-option>
-                <ion-select-option>ร้านที่7</ion-select-option>
-                <ion-select-option>ร้านที่8</ion-select-option>
-                <ion-select-option>ร้านที่9</ion-select-option>
-                <ion-select-option>ร้านที่10</ion-select-option>
-                <ion-select-option>ร้านที่11</ion-select-option>
+              <ion-select [(ngModel)] = "market2" name = "market2">
+                <ion-select-option *ngFor="let market of marketlist1" value = "{{market.name}}">{{market.name}}</ion-select-option>
+                
               </ion-select>
             </ion-item>
           </ion-card>
+          <ion-label>
+              กระเพรา
+            </ion-label>
+            <br /> 
+            <ion-label>
+                กระเพรา
+              </ion-label>
+              <br /> 
+              <ion-label>
+                  กระเพรา
+                </ion-label>
+                <br /> 
+                <ion-label>
+                    กระเพรา
+                  </ion-label>
+                  <br /> 
+                  <ion-label>
+                      กระเพรา
+                    </ion-label>
+                    <br /> 
+                    <ion-label>
+                        กระเพรา
+                      </ion-label>
+                      <br /> 
+                      <ion-label>
+                          กระเพรา
+                        </ion-label>
+          <div class="btl">
+          <ion-button expand="full" (click) = "openModel2()" >เพิ่มอาหาร</ion-button>
+        </div>
           </div>
         </ion-card>
       </div>
@@ -65,49 +112,49 @@ Presto Delivery
           <ion-card >
             <ion-item >
                 <ion-label>เลือกร้านอาหาร</ion-label>
-                <ion-select>
-                  <ion-select-option selected >ร้านที่1</ion-select-option>
-                  <ion-select-option>ร้านที่2</ion-select-option>
-                  <ion-select-option>ร้านที่3</ion-select-option>
-                  <ion-select-option>ร้านที่4</ion-select-option>
-                  <ion-select-option>ร้านที่5</ion-select-option>
-                  <ion-select-option >ร้านที่6</ion-select-option>
-                  <ion-select-option>ร้านที่7</ion-select-option>
-                  <ion-select-option>ร้านที่8</ion-select-option>
-                  <ion-select-option>ร้านที่9</ion-select-option>
-                  <ion-select-option>ร้านที่10</ion-select-option>
-                  <ion-select-option>ร้านที่11</ion-select-option>
+                <ion-select [(ngModel)] = "market3" name = "market3">
+                  <ion-select-option *ngFor="let market of marketlist1" value = "{{market.name}}">{{market.name}}</ion-select-option>
+                  
                 </ion-select>
               </ion-item>
             </ion-card>
+            <ion-label>
+                กระเพรา
+              </ion-label>
+              <br /> 
+              <ion-label>
+                  กระเพรา
+                </ion-label>
+                <br /> 
+                <ion-label>
+                    กระเพรา
+                  </ion-label>
+                  <br /> 
+                  <ion-label>
+                      กระเพรา
+                    </ion-label>
+                    <br /> 
+                    <ion-label>
+                        กระเพรา
+                      </ion-label>
+                      <br /> 
+                      <ion-label>
+                          กระเพรา
+                        </ion-label>
+                        <br /> 
+                        <ion-label>
+                            กระเพรา
+                          </ion-label>
+            <div class="btl">
+          <ion-button  expand="full"  (click) = "openModel3()" >เพิ่มอาหาร</ion-button>
+          
+        </div>
             </div>
           </ion-card>
         </div>
+        
 
-        <div class="card01">
-            <ion-card >
-              <div class="card02">
-            <ion-card >
-              <ion-item >
-                  <ion-label>เลือกร้านอาหาร</ion-label>
-                  <ion-select>
-                    <ion-select-option selected >ร้านที่1</ion-select-option>
-                    <ion-select-option>ร้านที่2</ion-select-option>
-                    <ion-select-option>ร้านที่3</ion-select-option>
-                    <ion-select-option>ร้านที่4</ion-select-option>
-                    <ion-select-option>ร้านที่5</ion-select-option>
-                    <ion-select-option >ร้านที่6</ion-select-option>
-                    <ion-select-option>ร้านที่7</ion-select-option>
-                    <ion-select-option>ร้านที่8</ion-select-option>
-                    <ion-select-option>ร้านที่9</ion-select-option>
-                    <ion-select-option>ร้านที่10</ion-select-option>
-                    <ion-select-option>ร้านที่11</ion-select-option>
-                  </ion-select>
-                </ion-item>
-              </ion-card>
-              </div>
-            </ion-card>
-          </div>
+        
       
 
 
@@ -117,3 +164,8 @@ Presto Delivery
       </ion-infinite-scroll-content>
     </ion-infinite-scroll>
   </ion-content>
+
+  <div class="buttonAl">
+    <ion-button expand="full" >ยืนยัน</ion-button>
+    
+  </div>
