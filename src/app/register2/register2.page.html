@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>register2</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-item>
+            <ion-label position="stacked">Username<ion-text color="danger">*</ion-text></ion-label>
+            <ion-input required type="text" [(ngModel)] = "user.email"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">Password<ion-text color="danger">*</ion-text></ion-label>
+            <ion-input required type="password" [(ngModel)] = "user.password"></ion-input>
+          </ion-item>
+
+<ion-content>
+        <div >
+          <ion-button expand="full" (click) = "register()" >Login</ion-button>
+        </div>
+        <div >
+          <ion-button fill = "clear" expand="full" >Register</ion-button>
+        </div> 
+
+
+</ion-content>

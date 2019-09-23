@@ -1,0 +1,29 @@
+.ttt-ttt{
+    
+    --background : #EC6C1F;
+    --color : #FFF;
+    
+}
+.card01{
+    ion-card{
+        --background : #F6EAEA;
+        height: 250px;
+    }
+}
+.card02{
+    ion-card{
+        height: 43px    ;
+    }
+}
+.btl{
+    ion-button{
+        --background : #EC6C1F;
+       --width : 50px;
+       --height : 100px;
+       --border-radius: 300px;
+       
+       
+    }
+    
+    
+}

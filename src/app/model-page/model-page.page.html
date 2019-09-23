@@ -1,0 +1,179 @@
+<ion-header>
+  <ion-toolbar class="header01">
+    <ion-title>
+      เลือกร้านอาหาร
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div class="sc01">
+<ion-item>
+  <ion-label>เลือกข้าว</ion-label>
+
+    <ionic-selectable item-content 
+    [(ngModel)]="marketMenu" 
+    itemValueField="name" 
+    itemTextField="name" 
+    [items]="marketMenuList" 
+    [canSearch]="true"
+		 (onChange)="portChange($event)">
+  </ionic-selectable>
+</ion-item>
+
+<ion-item>
+  <ion-label>ประเภทอาหาร</ion-label>
+
+    <ionic-selectable item-content 
+    [(ngModel)]="marketMenu" 
+    itemValueField="name" 
+    itemTextField="name" 
+    [items]="marketMenuList" 
+    [canSearch]="true"
+		 (onChange)="portChange($event)">
+  </ionic-selectable>
+</ion-item>
+
+<ion-item>
+  <ion-label>เนื้อสัตว์1</ion-label>
+
+    <ionic-selectable item-content 
+    [(ngModel)]="marketMenu" 
+    itemValueField="name" 
+    itemTextField="name" 
+    [items]="marketMenuList" 
+    [canSearch]="true"
+		 (onChange)="portChange($event)">
+  </ionic-selectable>
+</ion-item>
+
+<ion-item>
+  <ion-label>เนื้อสัตว์2</ion-label>
+
+    <ionic-selectable item-content 
+    [(ngModel)]="marketMenu" 
+    itemValueField="name" 
+    itemTextField="name" 
+    [items]="marketMenuList" 
+    [canSearch]="true"
+		 (onChange)="portChange($event)">
+  </ionic-selectable>
+</ion-item>
+
+<ion-item>
+  <ion-label>เนื้อสัตว์3</ion-label>
+
+    <ionic-selectable item-content 
+    [(ngModel)]="marketMenu" 
+    itemValueField="name" 
+    itemTextField="name" 
+    [items]="marketMenuList" 
+    [canSearch]="true"
+		 (onChange)="portChange($event)">
+  </ionic-selectable>
+</ion-item>
+
+
+
+<ion-card>
+<ion-grid>
+<ion-row>
+<ion-col>
+<div float-left >
+  <ion-label [(ngModel)] = "foodname" name = "foodname" ngDefaultControl>
+   {{foodname.name}}
+</ion-label>
+</div>
+</ion-col>
+<ion-col>
+<div class="bp1">
+  <ion-button (click) = "onDecreaseMenu()"  size="small">-</ion-button>
+</div>
+</ion-col>
+<div>
+ 
+  <ion-label [(ngModel)] = "amountMenu" name = "amountMenu" ngDefaultControl>
+    {{amountMenu}}
+</ion-label>
+
+</div>
+<ion-col>
+    <div class="bp2">
+      <ion-button (click) = "onIncreaseMenu()" float-right size="small">+</ion-button>
+    </div>
+    </ion-col>
+</ion-row>
+</ion-grid>
+</ion-card>
+
+
+<ion-item>
+  <ion-label>เลือก Option</ion-label>
+
+    <ionic-selectable item-content 
+    [(ngModel)]="option" 
+    itemValueField="name" 
+    itemTextField="name" 
+    [items]="optionFoodLists" 
+    [canSearch]="true"
+		 (onChange)="portChange2($event)">
+  </ionic-selectable>
+</ion-item>
+
+<div>
+  <ion-card>
+      <ion-grid>
+      <ion-row>
+      <ion-col>
+      <div float-left >
+        <ion-label [(ngModel)] = "optionname" name = "optionname" ngDefaultControl>
+         {{optionname.name}}
+      </ion-label>
+      </div>
+      </ion-col>
+      <ion-col>
+      <div class="bp1">
+        <ion-button (click) = "onDecreaseOption()"  size="small">-</ion-button>
+      </div>
+      </ion-col>
+      <div>
+       
+        <ion-label [(ngModel)] = "amountOption" name = "amountOption"  ngDefaultControl>
+        {{amountOption}}
+      </ion-label>
+      
+      </div>
+      <ion-col>
+          <div class="bp2">
+            <ion-button (click) = "onIncreaseOption()" float-right size="small">+</ion-button>
+          </div>
+          </ion-col>
+      </ion-row>
+      </ion-grid>
+      </ion-card>
+</div>
+
+
+  <ion-list>
+
+    <ion-item *ngFor="let task of items4 | async">
+
+      <input type="text" [(ngModel)]="task.name">
+
+    </ion-item>
+
+  </ion-list>
+
+<ion-card>
+  <ion-item>
+    <ion-label>ข้าวกระเพราไก่ปลาหมึกหมู่ไข่ดาว</ion-label>
+    
+  </ion-item>
+</ion-card>  
+
+</div>
+
+<ion-content>
+  <div class="btl">
+          <ion-button expand="full" (click) = "closePage()" > ยืนยัน </ion-button>
+        </div>
+</ion-content>
