@@ -121,14 +121,14 @@ export class ModelPagePage implements OnInit {
     private db: AngularFireDatabase,
     private aft :AngularFirestore
     ) {
-      this.items2 = db.list('/tasks');
+      this.items2 = db.list('test');
       this.items4 = this.items2.snapshotChanges().pipe(
         map(changes => 
           changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
         )
       );
 
-      
+      console.log(this.items4)
 
 
 
