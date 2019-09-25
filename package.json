@@ -39,11 +39,19 @@
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
+<<<<<<< HEAD
+    "@angular-devkit/architect": "~0.801.2",
+    "@angular-devkit/build-angular": "~0.801.2",
+    "@angular-devkit/core": "~8.1.2",
+    "@angular-devkit/schematics": "~8.1.2",
+    "@angular/cli": "8.1.3",
+=======
     "@angular-devkit/architect": "^0.801.3",
     "@angular-devkit/build-angular": "^0.801.3",
     "@angular-devkit/core": "^8.2.1",
     "@angular-devkit/schematics": "^8.2.1",
     "@angular/cli": "^8.2.1",
+>>>>>>> 48708a19faaf6bbb3043ac01731e23495590edc0
     "@angular/compiler": "~8.1.2",
     "@angular/compiler-cli": "~8.1.2",
     "@angular/language-service": "~8.1.2",
