@@ -9,11 +9,11 @@ export class HomeServiceService {
 
   constructor(private http : HttpClient) { }
 
-  baseURL = "http://localhost:8000";
+  baseURL = "https://damp-garden-65859.herokuapp.com";
   httpHeader = new HttpHeaders({'Content-Type':'application/json'})
 
 
   getAccout():Observable<any>{
-    return this.http.get(this.baseURL+'/marketlist',{headers:this.httpHeader});
+    return this.http.get(this.baseURL+'/Restaurant',{headers:this.httpHeader});
   }
 }
