@@ -9,11 +9,23 @@ export class ModelsService {
 
   constructor(private http : HttpClient) {  }
 
-  baseURL = "http://localhost:8000";
+  baseURL = "https://damp-garden-65859.herokuapp.com";
   httpHeader = new HttpHeaders({'Content-Type':'application/json'})
 
 
-  getFoodBymarketname(marketname):Observable<any>{
+  getMenu():Observable<any>{
+    return this.http.get(this.baseURL+'/Menu',{headers:this.httpHeader});
+  }
+
+  getTypeMenu():Observable<any>{
+    return this.http.get(this.baseURL+'/TypeMenu',{headers:this.httpHeader});
+  }
+
+  getRawMaterial():Observable<any>{
+    return this.http.get(this.baseURL+'/RawMaterial',{headers:this.httpHeader});
+  }
+
+ getFoodBymarketname(marketname):Observable<any>{
     return this.http.get(this.baseURL+'/food?search='+marketname,{headers:this.httpHeader});
   }
 

@@ -88,7 +88,7 @@ export class ModelPagePage implements OnInit {
 
    */
 
-
+  RawMaterialList = [];
   marketMenuList = [];
   marketMenu ;
   optionFoodLists = []; 
@@ -174,6 +174,58 @@ export class ModelPagePage implements OnInit {
     this.food = {id:'',name:'',exFood:'',priceBase:'',markets:''}
    // this.option = {id:'',name:'',price:'',typefoods:'',markets:''}
     
+
+   this.modelService.getMenu().subscribe(
+    data => {
+      console.log("get Data");
+      console.log(data);
+      //this.market = JSON.stringify(data[0].id);
+      // data[value of id] . parameter of oject
+      for(var i = 0; i < data.length; i++){
+        this.marketMenuList.push(data[i]);
+        
+        console.log((data[i])); //here you'll get sendernewcall value for all entry
+        console.log(this.marketMenuList);
+      }
+    }
+    
+  );
+
+  
+  this.modelService.getTypeMenu().subscribe(
+    data => {
+      console.log("get Data");
+      console.log(data);
+      //this.market = JSON.stringify(data[0].id);
+      // data[value of id] . parameter of oject
+      for(var i = 0; i < data.length; i++){
+        this.foodlist.push(data[i]);
+        
+        console.log((data[i])); //here you'll get sendernewcall value for all entry
+        console.log(this.foodlist);
+      }
+    }
+    
+  );
+
+  this.modelService.getRawMaterial().subscribe(
+    data => {
+      console.log("get Data");
+      console.log(data);
+      //this.market = JSON.stringify(data[0].id);
+      // data[value of id] . parameter of oject
+      for(var i = 0; i < data.length; i++){
+        this. RawMaterialList .push(data[i]);
+        
+        console.log((data[i])); //here you'll get sendernewcall value for all entry
+        console.log(this. RawMaterialList );
+      }
+    }
+    
+  );
+
+
+
     console.log(this.userID);
     this.modelService.getFoodBymarketname(this.marketname).subscribe(
       data => {
