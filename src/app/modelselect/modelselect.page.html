@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title [(ngModel)] = "marketname" name = "marketname" ngDefaultControl >เลือกประเภทอาหาร ร้าน {{marketname}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div >
+          <ion-button expand="full" (click) = "openFoodPage()" >เลือกอาหารจานหลัก</ion-button>
+        </div>
+        <div >
+          <ion-button expand="full" (click) = "openDrinkPage()" >เลือกเครื่องดื่ม</ion-button>
+        </div>
+        <div >
+          <ion-button expand="full" (click) = "openSnackPage()" >เลือกของทานเล่น</ion-button>
+        </div>
+        <div >
+          <ion-button expand="full" (click) = "openBekeryPage()" >เลือกเบเกอรี่</ion-button>
+        </div>
+        <div >
+          <ion-button expand="full" (click) = "openFruitPage()" >เลือกผลไม้</ion-button>
+        </div>
+
+<div >
+          <ion-button expand="full" (click) = " closePage()" >close</ion-button>
+        </div>
+
+
+<ion-content>
+
+</ion-content>
