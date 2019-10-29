@@ -1,18 +1,16 @@
-.headcolor{
+.colorBk{
     --background : #EC6C1F;
     --color : #FFF;
 }
-.sc01{
-   
-    width: 300px;
-
-}
-.sc02{
-    width: 100px;
+.scbk{
+    height: 100%;
 }
 .buttonAl{
     ion-button{
         --background : #64EC82;
      
     }
+}
+.sinput{
+    height: 50px;
 }
