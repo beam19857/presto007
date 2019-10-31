@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class HomeServiceService {
+export class HeadbillServiceService {
 
   constructor(private http : HttpClient) { }
 
@@ -13,7 +13,10 @@ export class HomeServiceService {
   httpHeader = new HttpHeaders({'Content-Type':'application/json'})
 
 
-  getAccout():Observable<any>{
-    return this.http.get(this.baseURL+'/Restaurant',{headers:this.httpHeader});
+  getHeadbill():Observable<any>{
+
+    console.log("Watsup!");
+    
+    return this.http.get(this.baseURL+'/Order',{headers:this.httpHeader});
   }
 }

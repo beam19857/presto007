@@ -6,6 +6,9 @@ import { ModelselectPage } from '../modelselect/modelselect.page';
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
 import {ActivatedRoute} from '@angular/router';
+import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
+import { Observable } from 'rxjs';
+import {map} from 'rxjs/operators'
 
 
 
@@ -24,10 +27,30 @@ export class HomePage  {
   market2;
   market3;
   marketlist1 = [];
- 
+    baskets0 : AngularFireList<any> = null;
+    baskets1 : Observable<any[]>;
+    newBaskets = {UID : ''}
+    key01; //buskets key
+    key02; // markets key
+  checkBasket = false  ;
+  marketCheck1 = false ;
+  marketCheck2 = false ;
+  marketCheck3 = false ;
+  marketKey01;
+  marketKey02;
+  marketKey03;
 
 
-  constructor(private activateRoute:ActivatedRoute,private Rout : Router,private HomeService : HomeServiceService,private modelController : ModalController ) {}
+  constructor(private db: AngularFireDatabase,private activateRoute:ActivatedRoute,private Rout : Router,private HomeService : HomeServiceService,private modelController : ModalController ) {
+    this.baskets0 = db.list('/baskets'); //ดึงมาแสดง
+      this.baskets1 = this.baskets0.snapshotChanges().pipe(
+        map(changes => 
+          changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+        )
+      );
+
+
+  }
     
   dataUID ;
    
@@ -39,6 +62,7 @@ export class HomePage  {
 
     this.dataUID = this.activateRoute.snapshot.paramMap.get('myids');
       console.log(this.dataUID);
+      this.newBaskets.UID = this.dataUID;
 
       this.market1 = {
         id:'',
@@ -61,6 +85,9 @@ export class HomePage  {
         timeToClose:'',
         timeToOpen:''
       }
+
+
+      
       this.HomeService.getAccout().subscribe(
         data => {
           console.log("get Data");
@@ -80,11 +107,24 @@ export class HomePage  {
 
   
  async openModel1(){
+   if(this.checkBasket == false){
+   this.key01 =  this.addBasket(this.newBaskets);
+   this.checkBasket = true;
+   }
+   if(this.marketCheck1 == false){
+      this.marketKey01 = this.addMarket(this.key01,this.market1)
+      console.log(this.marketKey01)
+      this.marketCheck1 = true;
+   }
+   console.log(this.key01);
+    
    const model = await this.modelController.create({
       component : ModelPagePage , 
       componentProps : {
       markets : this.market1,
-      userID :  this.dataUID
+      userID :  this.dataUID,
+      marketKey : this.marketKey01,
+      basketKey : this.key01
       }
    });
    
@@ -92,11 +132,22 @@ export class HomePage  {
   }
 
   async openModel2(){
+    if(this.checkBasket == false){
+      this.key01 =  this.addBasket(this.newBaskets);
+      this.checkBasket = true;
+      }
+      if(this.marketCheck2 == false){
+         this.marketKey02 = this.addMarket(this.key01,this.market2)
+         console.log(this.marketKey02)
+         this.marketCheck2 = true;
+      }
     const model = await this.modelController.create({
        component : ModelPagePage,
        componentProps : {
         markets : this.market2,
-        userID :  this.dataUID
+        userID :  this.dataUID,
+        marketKey : this.marketKey02,
+        basketKey : this.key01
         }
     });
     
@@ -104,11 +155,22 @@ export class HomePage  {
    }
 
    async openModel3(){
+    if(this.checkBasket == false){
+      this.key01 =  this.addBasket(this.newBaskets);
+      this.checkBasket = true;
+      }
+      if(this.marketCheck3 == false){
+         this.marketKey02 = this.addMarket(this.key01,this.market3)
+         console.log(this.marketKey02)
+         this.marketCheck3 = true;
+      }
     const model = await this.modelController.create({
        component : ModelPagePage,
        componentProps : {
         markets : this.market3,
-        userID :  this.dataUID
+        userID :  this.dataUID,
+        marketKey : this.marketKey03,
+        basketKey : this.key01
         }
     });
     
@@ -121,6 +183,16 @@ export class HomePage  {
       console.log(this.market3);
 
    }
+
+   addBasket(basket) {
+    let key = this.baskets0.push(basket).key
+    return key
+  }
+  addMarket(key,marketname){
+    return firebase.database().ref('baskets/'+key+'/market').push(marketname).key
+  }
+
+  addMenu
 
 
 }
