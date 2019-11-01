@@ -3,6 +3,7 @@ import {NavController,ModalController} from '@ionic/angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import {Router} from '@angular/router';
 import * as firebase from 'firebase';
+import { LoginService } from './login.service';
 
   export class User {
     email: string;
@@ -18,7 +19,10 @@ export class LoginPage implements OnInit {
 
   public user:User = new User();
 
-  constructor(private Rout : Router,private nav : NavController,public fAuth: AngularFireAuth) { }
+  constructor(private Rout : Router,private nav : NavController,public fAuth: AngularFireAuth,
+    
+    private loginService :LoginService,
+    ) { }
 
   ngOnInit() {
   }
@@ -26,23 +30,19 @@ export class LoginPage implements OnInit {
   data;
   
 
-  async onlogin() {
-    try {
-      var r = await this.fAuth.auth.signInWithEmailAndPassword(
-        this.user.email,
-        this.user.password
-      );
-      if (r) {
-        console.log("Successfully logged in!");
-        console.log(r.user.uid);
-        this.data = r.user.uid;
-        this.Rout.navigate(['main',this.data]);
+  onLogin() {
+    
+    console.log("Presto5555555");
+    this.loginService.onLogin().subscribe(
+      data => {
+        console.log("login!!");
+        console.log(data);       
       }
 
-    } catch (err) {
-      alert("email or password not found");
-      console.error(err);
-    }
+    );
+
+
+
   }
 
   onRegister(){
