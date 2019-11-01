@@ -13,8 +13,8 @@ export class ModelsService {
   httpHeader = new HttpHeaders({'Content-Type':'application/json'})
 
 
-  getMenu():Observable<any>{
-    return this.http.get(this.baseURL+'/Menu',{headers:this.httpHeader});
+  getMenu(id):Observable<any>{
+    return this.http.get(this.baseURL+'/Menu/restaurant/'+id,{headers:this.httpHeader});
   }
 
   getTypeMenu():Observable<any>{
@@ -25,21 +25,12 @@ export class ModelsService {
     return this.http.get(this.baseURL+'/RawMaterial',{headers:this.httpHeader});
   }
 
- getFoodBymarketname(marketname):Observable<any>{
-    return this.http.get(this.baseURL+'/food?search='+marketname,{headers:this.httpHeader});
+  getMainCourseByMarket(id):Observable<any>{
+
+    return this.http.get(this.baseURL+'/MainCourse/byRestaurant/'+id,{headers:this.httpHeader});
   }
 
-  getOptionByMarketName(marketname):Observable<any>{
-    return this.http.get(this.baseURL+'/option?search='+marketname,{headers:this.httpHeader});
-  }
-
-  getDrinkByMarketName(marketname):Observable<any>{
-    return this.http.get(this.baseURL+'/drink?search='+marketname,{headers:this.httpHeader});
-  }
-
-  getSnackByMarketName(marketname):Observable<any>{
-    return this.http.get(this.baseURL+'/snack?search='+marketname,{headers:this.httpHeader})
-  }
+ 
 
 }
 

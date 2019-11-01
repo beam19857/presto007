@@ -75,19 +75,12 @@ export class ModelPagePage implements OnInit {
    basketKey;
    marketKey;
 
-  menuData;
+   menuData;
 /* 
       menu design -- > food amout , option amount , food opject , option opject ,0
 
-
-
-
-
-
-
-
    */
-
+  MainCourseList = [];
   RawMaterialList = [];
   marketMenuList = [];
   marketMenu ;
@@ -109,6 +102,7 @@ export class ModelPagePage implements OnInit {
   userID ;
   keyMenu;
   keyOption;
+  mainCourseCheck = false;
 
 
 
@@ -150,6 +144,7 @@ export class ModelPagePage implements OnInit {
     this.userID = this.navPara.get('userID');
     this.marketKey = this.navPara.get('marketKey');
     this.basketKey = this.navPara.get('basketKey')
+    console.log(this.marketname);
 
     this.keyMenu = this.makeKey(this.lengthOfCode,this.possible);
     console.log(this.keyMenu);
@@ -175,7 +170,7 @@ export class ModelPagePage implements OnInit {
    // this.option = {id:'',name:'',price:'',typefoods:'',markets:''}
     
 
-   this.modelService.getMenu().subscribe(
+   this.modelService.getMenu(this.marketname).subscribe(
     data => {
       console.log("get Data");
       console.log(data);
@@ -184,8 +179,8 @@ export class ModelPagePage implements OnInit {
       for(var i = 0; i < data.length; i++){
         this.marketMenuList.push(data[i]);
         
-        console.log((data[i])); //here you'll get sendernewcall value for all entry
-        console.log(this.marketMenuList);
+       // console.log((data[i])); //here you'll get sendernewcall value for all entry
+      //  console.log(this.marketMenuList);
       }
     }
     
@@ -201,8 +196,8 @@ export class ModelPagePage implements OnInit {
       for(var i = 0; i < data.length; i++){
         this.foodlist.push(data[i]);
         
-        console.log((data[i])); //here you'll get sendernewcall value for all entry
-        console.log(this.foodlist);
+       // console.log((data[i])); //here you'll get sendernewcall value for all entry
+      //  console.log(this.foodlist);
       }
     }
     
@@ -217,72 +212,33 @@ export class ModelPagePage implements OnInit {
       for(var i = 0; i < data.length; i++){
         this. RawMaterialList .push(data[i]);
         
-        console.log((data[i])); //here you'll get sendernewcall value for all entry
-        console.log(this. RawMaterialList );
+       // console.log((data[i])); //here you'll get sendernewcall value for all entry
+       // console.log(this. RawMaterialList );
       }
     }
     
+  );
+  this.modelService.getMainCourseByMarket(this.marketname).subscribe(
+    data => {
+      console.log("get Data");
+      console.log(data);
+      //this.market = JSON.stringify(data[0].id);
+      // data[value of id] . parameter of oject
+      for(var i = 0; i < data.length; i++){
+        this.MainCourseList.push(data[i]);
+        
+       // console.log((data[i])); //here you'll get sendernewcall value for all entry
+       // console.log(this. RawMaterialList );
+      }
+      console.log(this.MainCourseList);
+    }
+     
   );
 
 
 
     console.log(this.userID);
-    this.modelService.getFoodBymarketname(this.marketname).subscribe(
-      data => {
-        console.log("get Data");
-        console.log(data);
-        for(var i = 0; i < data.length; i++){ 
-          if(data[i].exFood == 'extra'){
-              data[i].name += " พิเศษ"
-          }
-          data[i].name += " " + data[i].priceBase + " บาท"
-          this.foodlist.push(data[i]);
-          this.marketMenuList.push(data[i]);
-        }        
-      }     
-    );
-      this.modelService.getDrinkByMarketName(this.marketname).subscribe(
-          data => {
-              for(var i = 0 ; i < data.length ; i ++){
-                if(data[i].typefoods == 'hot')
-                data[i].name += " " + "ร้อน " + data[i].priceBase
-                else if (data[i].typefoods == 'cool')
-                data[i].name += " " + "เย็น " + data[i].priceBase
-                else
-                data[i].name += " " + "ปั่น " + data[i].priceBase
-                this.marketMenuList.push(data[i]);
-              }
-          }
-      );
-       this.modelService.getSnackByMarketName(this.marketname).subscribe(
-          data => {
-            for(var i = 0 ; i < data.length ; i ++){
-              if(data[i].exFood == 'extra'){
-                data[i].name += " พิเศษ"
-            }
-            data[i].name += " " + data[i].priceBase + " บาท"
-              this.marketMenuList.push(data[i]);
-            }
-          }
-
-      );
- 
-
-
-
-    this.modelService.getOptionByMarketName(this.marketname).subscribe(
-      data => {
-        console.log("get Data");
-        console.log(data);
-        for(var i = 0; i < data.length; i++){ 
-              data[i].name += " " + data[i].price + " บาท"
-              if(data[i].typefoods == 'food')
-                 this.optionFoodList.push(data[i]);
-              else
-                this.optionDrinkList.push(data[i]);
-        }        
-      }     
-    );
+   
 
     console.log(this.marketMenuList)
 
@@ -313,30 +269,7 @@ export class ModelPagePage implements OnInit {
   }
 //================================================================================== test
 
-  portChange(event: {
-    component: IonicSelectableComponent,
-    value: any 
-  }) {
-    console.log('food:', event.value);
-    console.log(this.marketname);
-    this.foodname.name = event.value.name;
-    if(event.value.typefood == 'food')
-    this.optionFoodLists = this.optionFoodList;
-    else
-    this.optionFoodLists = this.optionDrinkList;
-
-  }
-
-  portChange2(event: {
-    component: IonicSelectableComponent,
-    value: any 
-  }) {
-    console.log('food:', event.value);
-    console.log(this.marketname);
-    this.optionname.name = event.value.name
-    
-
-  }
+ 
     onIncreaseMenu(){
         this.amountMenu++;
 
@@ -376,6 +309,11 @@ export class ModelPagePage implements OnInit {
 
 createMenu(basketKey,marketKey,menu)  {
   firebase.database().ref('baskets/'+basketKey+'/'+marketKey+'/'+menu)
+}
+
+checkMainCourse(){
+  
+
 }
 
 

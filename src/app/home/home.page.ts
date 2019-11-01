@@ -101,6 +101,7 @@ export class HomePage  {
         }
         
       );
+      //console.log(this.market1);
   }
 
   
@@ -125,6 +126,7 @@ export class HomePage  {
       basketKey : this.key01
       }
    });
+   console.log(this.market1.id);
    
    return await model.present();
   }
