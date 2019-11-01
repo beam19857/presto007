@@ -5,7 +5,7 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
+ <ion-content>
 <div class="sc01">
 
   <ion-item>
@@ -43,9 +43,6 @@
       <ion-select-option *ngFor="let menu of  RawMaterialList " value = "{{menu.name}}">{{menu.name}}</ion-select-option>
       </ion-select>
   </ion-item>
-  
-  
-  
   <ion-card>
   <ion-grid>
   <ion-row>
@@ -80,8 +77,6 @@
   
   <ion-item>
     <ion-label>เลือก Option</ion-label>
-  
-  
     <ion-select [(ngModel)]="Option" name="Option">
       <ion-select-option *ngFor="let menu of  RawMaterialList " value = "{{menu.name}}">{{menu.name}}</ion-select-option>
       </ion-select>
@@ -119,22 +114,25 @@
         </ion-grid>
         </ion-card>
   </div>
-
-  
-  
-  
-
 <ion-card>
   <ion-item>
+    <B>
     <ion-label>ข้าวกระเพราไก่ปลาหมึกหมู่ไข่ดาว</ion-label>
-    
+    </B>
   </ion-item>
 </ion-card>  
 
-</div>
+<ion-card>
+    <ion-item>
+       <ion-label> ขอเผ็ดๆ</ion-label>
+    </ion-item>
+</ion-card>
 
-<ion-content>
-  <div class="btl">
+</div>
+</ion-content>
+
+
+       <div class="btl">
           <ion-button expand="full" (click) = "closePage()" > ยืนยัน </ion-button>
         </div>
-</ion-content>
+

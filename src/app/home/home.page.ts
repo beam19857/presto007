@@ -14,7 +14,6 @@ import {map} from 'rxjs/operators'
 
 
 
-
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -86,6 +85,9 @@ export class HomePage  {
         timeToClose:'',
         timeToOpen:''
       }
+
+
+      
       this.HomeService.getAccout().subscribe(
         data => {
           console.log("get Data");
