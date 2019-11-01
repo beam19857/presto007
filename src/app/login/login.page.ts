@@ -27,22 +27,24 @@ export class LoginPage implements OnInit {
   
 
   async onlogin() {
-    try {
-      var r = await this.fAuth.auth.signInWithEmailAndPassword(
-        this.user.email,
-        this.user.password
-      );
-      if (r) {
-        console.log("Successfully logged in!");
-        console.log(r.user.uid);
-        this.data = r.user.uid;
-        this.Rout.navigate(['main',this.data]);
-      }
+    // try {
+    //   var r = await this.fAuth.auth.signInWithEmailAndPassword(
+    //     this.user.email,
+    //     this.user.password
+    //   );
+    //   if (r) {
+    //     console.log("Successfully logged in!");
+    //     console.log(r.user.uid);
+    //     this.data = r.user.uid;
+    //     this.Rout.navigate(['main',this.data]);
+    //   }
 
-    } catch (err) {
-      alert("email or password not found");
-      console.error(err);
-    }
+    // } catch (err) {
+    //   alert("email or password not found");
+    //   console.error(err);
+    // }
+    this.nav.navigateForward('/home') ;
+
   }
 
   onRegister(){
