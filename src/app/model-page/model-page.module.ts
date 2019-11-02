@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { IonicSelectableModule } from 'ionic-selectable';
 import { IonicModule } from '@ionic/angular';
-
 import { ModelPagePage } from './model-page.page';
 
 const routes: Routes = [

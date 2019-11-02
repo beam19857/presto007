@@ -21,7 +21,7 @@
         <ion-item >
             <ion-label>เลือกร้านอาหาร</ion-label>
             <ion-select [(ngModel)]="market1" name="market1">
-              <ion-select-option *ngFor="let market of marketlist1" value = "{{market.name}}">{{market.name}}</ion-select-option>
+              <ion-select-option *ngFor="let market of marketlist1" value = "{{market.id}}">{{market.name}}</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-card>

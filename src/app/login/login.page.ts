@@ -6,8 +6,8 @@ import * as firebase from 'firebase';
 import { LoginService } from './login.service';
 
   export class User {
-    email: string;
-    password: string;
+    email: any;
+    password: "";
 }
 
 @Component({
@@ -17,32 +17,48 @@ import { LoginService } from './login.service';
 })
 export class LoginPage implements OnInit {
 
-  public user:User = new User();
+  username:"";
+  email:any;
+  password:"";
+  http: any;
 
-  constructor(private Rout : Router,private nav : NavController,public fAuth: AngularFireAuth,
-    
-    private loginService :LoginService,
+
+  users={
+    username:"",
+    password:""
+  }
+
+
+  constructor(
+    private Rout : Router,
+    private nav : NavController,
+    public fAuth: AngularFireAuth,
+    private LoginService :LoginService,
     ) { }
 
   ngOnInit() {
   }
  
-  data;
+
   
 
   onLogin() {
     
-    console.log("Presto5555555");
-    this.loginService.onLogin().subscribe(
+    console.log(this.users);
+    
+    this.LoginService.onLogininput(this.users).subscribe(
       data => {
         console.log("login!!");
-        console.log(data);       
-      }
-
+        console.log(data);  
+                 if( data == this.users.username ){
+                       console.log("done!!");
+                       this.nav.navigateForward('/home') ;
+                }else
+                         alert("รหัสผ่านหรืออีเมลผิด")
+      }     
+      
     );
-
-
-
+    
   }
 
   onRegister(){

@@ -7,14 +7,15 @@
 </ion-header>
  <ion-content>
 <div class="sc01">
+
   <ion-item>
     <ion-label>เลือกข้าว</ion-label>
       <ion-select [(ngModel)]="food" name="food">
-        <ion-select-option *ngFor="let menu of marketMenuList" value = "{{menu.name}}">{{menu.name}}</ion-select-option>
+        <ion-select-option *ngFor="let menu of MainCourseList" value = "{{menu[0]}}">{{menu[1]}}</ion-select-option>
       </ion-select>
   </ion-item>
   
-  <ion-item>    
+  <ion-item >    
     <ion-label>เลือกเมนู</ion-label>
       <ion-select [(ngModel)]="Menu" name="Menu">
         <ion-select-option *ngFor="let menu of foodlist" value = "{{menu.name}}">{{menu.name}}</ion-select-option>
@@ -122,9 +123,9 @@
 </ion-card>  
 
 <ion-card>
-    <ion-item>
-       <ion-label> ขอเผ็ดๆ</ion-label>
-    </ion-item>
+    <ion-textarea>
+       <!-- <ion-label> ขอเผ็ดๆ</ion-label> -->
+    </ion-textarea>
 </ion-card>
 
 </div>

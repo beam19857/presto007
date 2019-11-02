@@ -16,26 +16,20 @@ export class LoginService {
     ) { 
  
   }
-  body = {
-    username:"beam" ,
-    password:"1234"
-
-    }
+    
 
   baseURL = "http://localhost:9000";
   httpHeader = new HttpHeaders({'Content-Type':'application/json'})
   
 
   
-  onLogin():Observable<any>{
+  onLogininput(users):Observable<any>{
+    console.log("Login");
+    
+// this.nav.navigateForward('/home') ;
+    return this.http.post(this.baseURL+'/Service/login',users,{headers:this.httpHeader , responseType:'text'}); 
 
-    console.log("this.body");
-    console.log(this.body);
-     
-    this.nav.navigateForward('/home') ;
-    return this.http.post(this.baseURL+'/Service/login',this.body,
-    {headers:this.httpHeader , responseType:'text'});
-
+    
   }
 
 }
