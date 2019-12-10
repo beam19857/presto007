@@ -66,3 +66,41 @@
     font-size: 20px;
     font-size-adjust: 10px;
 }
+.btl{
+    ion-button{
+        --background : #289c19;
+       --width : 50px;
+       --height : 100px;
+       --border-radius: 300px;
+    }
+    font-family: 'Prompt', sans-serif;
+  }  
+
+  .btl2{
+    ion-button{
+        --background : #da1a1ac4;
+       --width : 50px;
+       --height : 100px;
+       --border-radius: 300px;
+    }
+    font-family: 'Prompt', sans-serif;
+  } 
+
+.bp1{
+    font-family: 'Prompt', sans-serif;
+    ion-button{
+        --background : #EC5353;
+       --width : 50px;
+       --height : 100px;
+       --border-radius: 300px; 
+    }
+}
+.bp2{
+    ion-button{
+        --background : #289c19;
+       --width : 50px;
+       --height : 100px;
+       --border-radius: 300px; 
+    }
+    font-family: 'Prompt', sans-serif;
+}

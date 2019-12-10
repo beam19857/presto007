@@ -1,6 +1,7 @@
 .ttt-ttt{
     --background : #EC6C1F;
     --color : #FFF;
+    font-family: 'Prompt', sans-serif;
 }
 .card01{
     ion-card{
@@ -22,10 +23,15 @@
        
        
     }
+    font-family: 'Prompt', sans-serif;
 }
 .buttonAl{
     ion-button{
         --background : #64EC82;
      
     }
+    font-family: 'Prompt', sans-serif;
+}
+.font{
+    font-family: 'Prompt', sans-serif;
 }

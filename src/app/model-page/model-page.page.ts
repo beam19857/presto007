@@ -1,7 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {NavParams,ModalController, PickerController} from '@ionic/angular';
-import {SelectSearchableModule, SelectSearchableComponent} from 'ionic-select-searchable'
-import { IonicSelectableComponent } from 'ionic-selectable';
 import { ModelsService } from './models.service';
 import * as firebase from 'firebase';
 import { snapshotToArray } from '../data/user';
@@ -9,6 +7,8 @@ import {AngularFireDatabase,AngularFireList} from 'angularfire2/database'
 import {AngularFirestore} from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import {map} from 'rxjs/operators'
+import {globalVariable} from "../globalVariable";
+import { Events } from '@ionic/angular';
 
 
 
@@ -95,6 +95,13 @@ export class ModelPagePage implements OnInit {
   food ;
   foodname  ;
   optionname;
+  menuname ;
+  Raw1 ;
+  Raw2 ;
+  Raw3 ;
+  rawname1 : '' ;
+  rawname2 : '' ;
+  rawname3 : '' ;
   items = [];
   ref = firebase.database().ref();
   amountMenu:number  ;
@@ -103,17 +110,37 @@ export class ModelPagePage implements OnInit {
   keyMenu;
   keyOption;
   mainCourseCheck = false;
+  Menu ;
+  exFood ;
+  note: '' ;
+  fullnames ;
 
+  dataResult = {
+    mainCourse : '' ,
+    manu : '' ,
+    raw1 : '',
+    raw2 : '',
+    raw3 : '',
+    ex : '',
+    option : '',
+    optionAmount : '',
+    foodAmount : '',
+    notedata : '',
+    fullname : ''
+
+  };
 
 
   
   constructor(
     private modelService : ModelsService,
+    public globalVar : globalVariable,
     private navPara:NavParams,
     private modelController : ModalController,
     private pickerCtrl: PickerController,
     private db: AngularFireDatabase,
-    private aft :AngularFirestore
+    private aft :AngularFirestore,
+    public events: Events
     ) {
       this.items2 = db.list('test');
       this.items4 = this.items2.snapshotChanges().pipe(
@@ -134,6 +161,7 @@ export class ModelPagePage implements OnInit {
         this.items = snapshotToArray(resp)  
       });
    }
+
    addItem(item){
      let newItem = this.ref.push();
      newItem.set(item)
@@ -144,7 +172,7 @@ export class ModelPagePage implements OnInit {
     this.userID = this.navPara.get('userID');
     this.marketKey = this.navPara.get('marketKey');
     this.basketKey = this.navPara.get('basketKey')
-    console.log(this.marketname);
+    console.log(this.marketname + " id market");
 
     this.keyMenu = this.makeKey(this.lengthOfCode,this.possible);
     console.log(this.keyMenu);
@@ -152,13 +180,14 @@ export class ModelPagePage implements OnInit {
     this.keyOption = this.makeKey(this.lengthOfCode,this.possible);
     console.log(this.keyOption)
 
-    
+
     
 
    
+    this.rawname3 = ''
+    this.rawname2 = ''
+    this.rawname1 = ''
     
-    
-
 
     this.foodname = {
       name : '',
@@ -166,58 +195,25 @@ export class ModelPagePage implements OnInit {
     this.optionname = {
       name : ''
     }
+    this.menuname = {
+      name : ''
+    }
+
     this.food = {id:'',name:'',exFood:'',priceBase:'',markets:''}
    // this.option = {id:'',name:'',price:'',typefoods:'',markets:''}
-    
-
-   this.modelService.getMenu(this.marketname).subscribe(
-    data => {
-      console.log("get Data");
-      console.log(data);
-      //this.market = JSON.stringify(data[0].id);
-      // data[value of id] . parameter of oject
-      for(var i = 0; i < data.length; i++){
-        this.marketMenuList.push(data[i]);
-        
-       // console.log((data[i])); //here you'll get sendernewcall value for all entry
-      //  console.log(this.marketMenuList);
-      }
+    this.Raw1 = {
+      name : ''
     }
-    
-  );
+    this.Raw2 = {
+      name : ''
+    }
+    this.Raw3 = {
+      name : ''
+    }
 
   
-  this.modelService.getTypeMenu().subscribe(
-    data => {
-      console.log("get Data");
-      console.log(data);
-      //this.market = JSON.stringify(data[0].id);
-      // data[value of id] . parameter of oject
-      for(var i = 0; i < data.length; i++){
-        this.foodlist.push(data[i]);
-        
-       // console.log((data[i])); //here you'll get sendernewcall value for all entry
-      //  console.log(this.foodlist);
-      }
-    }
-    
-  );
 
-  this.modelService.getRawMaterial().subscribe(
-    data => {
-      console.log("get Data");
-      console.log(data);
-      //this.market = JSON.stringify(data[0].id);
-      // data[value of id] . parameter of oject
-      for(var i = 0; i < data.length; i++){
-        this. RawMaterialList .push(data[i]);
-        
-       // console.log((data[i])); //here you'll get sendernewcall value for all entry
-       // console.log(this. RawMaterialList );
-      }
-    }
-    
-  );
+  
   this.modelService.getMainCourseByMarket(this.marketname).subscribe(
     data => {
       console.log("get Data");
@@ -243,6 +239,64 @@ export class ModelPagePage implements OnInit {
     console.log(this.marketMenuList)
 
       }
+
+
+      getTypefood(id){
+        console.log(this.food + " main course")
+        this.foodname = this.food.split(',')
+
+        this.modelService.getTypeMenuByMainCourse(this.food[0]).subscribe(
+          data => {
+            console.log("get Data type food");
+            console.log(data);
+            //this.market = JSON.stringify(data[0].id);
+            // data[value of id] . parameter of oject
+            for(var i = 0; i < data.length; i++){
+              this.foodlist.push(data[i]);
+              
+             // console.log((data[i])); //here you'll get sendernewcall value for all entry
+             // console.log(this. RawMaterialList );
+            }
+            console.log(this.foodlist);
+          }
+           
+        );
+
+      }
+
+      getRaw(idt){
+        this.menuname = this.Menu.split(',')
+        this.modelService.getRawMaterialByTypeMenu(this.marketname,this.Menu[0]).subscribe(
+          data => {
+            console.log("get Data Raw Mat");
+            console.log(data);
+            //this.market = JSON.stringify(data[0].id);
+            // data[value of id] . parameter of oject
+            for(var i = 0; i < data.length; i++){
+              this.RawMaterialList.push(data[i]);
+              
+             // console.log((data[i])); //here you'll get sendernewcall value for all entry
+             // console.log(this. RawMaterialList );
+            }
+            console.log(this.RawMaterialList);
+          }
+           
+        );
+
+      }
+
+      changeRaw1(){
+        this.rawname1 = this.searchFoodlist(this.Raw1);       
+          console.log(this.rawname1)
+      }
+      changeRaw2(){
+        this.rawname2 = this.searchFoodlist(this.Raw2) ;
+          console.log(this.rawname2)
+      }
+      changeRaw3(){
+        this.rawname3 = this.searchFoodlist(this.Raw3) ;
+          console.log(this.rawname3)
+      }
     
   closePage(){
     //this.createMenu();
@@ -250,6 +304,24 @@ export class ModelPagePage implements OnInit {
 // ======================================================= test
     this.CalPrice(this.totalPrice)
 // ======================================================= test
+  }
+
+  saveResult(){
+    this.dataResult.notedata = this.note
+    this.dataResult.mainCourse = this.food.split(',')[0] 
+    this.dataResult.manu = this.Menu.split(',')[0] 
+    this.dataResult.raw1 = this.Raw1
+    this.dataResult.raw2 = this.Raw2
+    this.dataResult.raw3 = this.Raw3
+    this.dataResult.ex = this.exFood
+    this.dataResult.option = this.option
+    this.dataResult.optionAmount  = String(this.amountOption)
+    this.dataResult.foodAmount = String(this.amountMenu)
+    this.dataResult.fullname = this.foodname[1] + this.menuname[1] +"("+ this.rawname1 + this.rawname2 + this.rawname3 + ")"
+    console.log(this.dataResult)
+    this.globalVar.Order.market1.orlderlist.push(this.dataResult)
+    this.events.publish('updateOrderList')
+    this.modelController.dismiss();
   }
 
 //================================================================================== test
@@ -275,10 +347,7 @@ export class ModelPagePage implements OnInit {
 
     }
     onIncreaseOption(){
-      this.amountOption++;
-         
-
-
+      this.amountOption++;        
     }
 
     onDecreaseMenu(){
@@ -309,6 +378,16 @@ export class ModelPagePage implements OnInit {
 
 createMenu(basketKey,marketKey,menu)  {
   firebase.database().ref('baskets/'+basketKey+'/'+marketKey+'/'+menu)
+}
+
+searchFoodlist(id){
+  for(let i = 0 ; i < this.RawMaterialList.length ; i++){
+    if(id == this.RawMaterialList[i].id){
+      return this.RawMaterialList[i].name
+    }
+   
+  }
+
 }
 
 checkMainCourse(){

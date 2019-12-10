@@ -1,0 +1,37 @@
+.ttt-ttt{
+    --background : #EC6C1F;
+    --color : #FFF;
+    font-family: 'Prompt', sans-serif;
+}
+.card01{
+    ion-card{
+        --background : #F6EAEA;
+        height: 250px;
+    }
+}
+.card02{
+    ion-card{
+        height: 43px    ;
+    }
+}
+.btl{
+    ion-button{
+        --background : #F0E799;
+       --width : 50px;
+       --height : 100px;
+       --padding-top : 30;
+       
+       
+    }
+    font-family: 'Prompt', sans-serif;
+}
+.buttonAl{
+    ion-button{
+        --background : #64EC82;
+     
+    }
+    font-family: 'Prompt', sans-serif;
+}
+.font{
+    font-family: 'Prompt', sans-serif;
+}

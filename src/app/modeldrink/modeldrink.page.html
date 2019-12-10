@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-toolbar class="header01">
+    <ion-title>
+      เลือกรายการเครื่องดื่ม
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<div class="sc01">
+  <ion-item>
+    <ion-label class = "font">เลือกเมนู</ion-label>
+      <ion-select >
+        <ion-select-option class = "font"></ion-select-option>
+      </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label class = "font">เลือกรสชาติ</ion-label>
+      <ion-select >
+        <ion-select-option class = "font"></ion-select-option>
+      </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label class = "font">เลือกสภานะ</ion-label>
+      <ion-select >
+        <ion-select-option class = "font"></ion-select-option>
+      </ion-select>
+  </ion-item>
+</div>
+
+<ion-card>
+<ion-item>
+    <ion-label class = "font">ส่วนเสริม 1</ion-label>
+      <ion-select >
+        <ion-select-option class = "font"></ion-select-option>
+      </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label class = "font">ส่วนเสริม 2</ion-label>
+      <ion-select >
+        <ion-select-option class = "font"></ion-select-option>
+      </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label class = "font">ส่วนเสริม 3</ion-label>
+      <ion-select >
+        <ion-select-option class = "font"></ion-select-option>
+      </ion-select>
+  </ion-item>
+  <ion-card>
+  <ion-item>
+    <B>
+    <ion-label class = "font">    </ion-label>
+    </B>
+  </ion-item>
+</ion-card>
+
+<ion-card>
+  <ion-grid>
+  <ion-row>
+  <ion-col>
+  <div float-left >
+    <ion-label class = "font" [(ngModel)] = "foodname" name = "foodname" ngDefaultControl>
+    
+  </ion-label>
+  </div>
+  </ion-col>
+  <ion-col>
+  <div class="bp1">
+    <ion-button (click) = "onDecreaseMenu()"  size="small">-</ion-button>
+  </div>
+  </ion-col>
+  <div>
+   
+    <ion-label [(ngModel)] = "amountMenu" name = "amountMenu" ngDefaultControl>
+      {{amountMenu}} 
+  </ion-label>
+  
+  </div>
+  <ion-col>
+      <div class="bp2">
+        <ion-button (click) = "onIncreaseMenu()" float-right size="small">+</ion-button>
+      </div>
+      </ion-col>
+  </ion-row>
+  </ion-grid>
+  </ion-card> 
+</ion-card>
+<ion-card>
+    <ion-item>
+       <ion-label class = "font" >Note : </ion-label>
+       <ion-textarea placeholder="ขอเผ็ด ๆ , ไม่เอาผัก , อื่น ๆ"></ion-textarea>
+    </ion-item>
+</ion-card>
+</ion-content>
+
+
+<div class="btl">
+          <ion-row >
+          <ion-button class = "font" expand="full" (click) = "closePage()" > ยืนยัน </ion-button>
+          <div class="btl2">
+          <ion-button class = "font" expand="full" (click) = "closePage()" > ย้อนกลับ </ion-button>
+          </div>
+          </ion-row>
+        </div>

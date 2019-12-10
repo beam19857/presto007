@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar class="header01">
     <ion-title>
-      เลือกร้านอาหาร
+      เลือกรายการอาหารของคุณ
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,76 +9,56 @@
 <div class="sc01">
 
   <ion-item>
-    <ion-label>เลือกข้าว</ion-label>
-      <ion-select [(ngModel)]="food" name="food">
-        <ion-select-option *ngFor="let menu of MainCourseList" value = "{{menu[0]}}">{{menu[1]}}</ion-select-option>
+    <ion-label class = "font">เลือกข้าว</ion-label>
+      <ion-select  [(ngModel)]="food" (ionChange)="getTypefood($event)" name="food">
+        <ion-select-option class = "font" *ngFor="let menu of MainCourseList" value = "{{menu}}">{{menu[1]}}</ion-select-option>
       </ion-select>
   </ion-item>
   
   <ion-item >    
-    <ion-label>เลือกเมนู</ion-label>
-      <ion-select [(ngModel)]="Menu" name="Menu">
-        <ion-select-option *ngFor="let menu of foodlist" value = "{{menu.name}}">{{menu.name}}</ion-select-option>
+    <ion-label class = "font">เลือกเมนู</ion-label>
+      <ion-select [(ngModel)]="Menu" (ionChange) = "getRaw($event)" name="Menu">
+        <ion-select-option class = "font" *ngFor="let menu of foodlist" value = "{{menu}}">{{menu[1]}}</ion-select-option>
       </ion-select>
   </ion-item>
   
   <ion-item>
-    <ion-label>เนื้อสัตว์ 1</ion-label>
-      <ion-select [(ngModel)]="Raw" name="Raw">
-        <ion-select-option *ngFor="let menu of  RawMaterialList " value = "{{menu.name}}">{{menu.name}}</ion-select-option>
+    <ion-label class = "font" >เนื้อสัตว์ 1</ion-label>
+      <ion-select [(ngModel)]="Raw1" (ionChange) = "changeRaw1()" name="Raw1">
+        <ion-select-option class = "font" *ngFor="let menu of  RawMaterialList " value = "{{menu.id}}">{{menu.name}}</ion-select-option>
       </ion-select>
   </ion-item>
   
   <ion-item>
-    <ion-label>เนื้อสัตว์ 2</ion-label>
-    <ion-select [(ngModel)]="Raw2" name="Raw2">
-      <ion-select-option *ngFor="let menu of  RawMaterialList " value = "{{menu.name}}">{{menu.name}}</ion-select-option>
+    <ion-label class = "font">เนื้อสัตว์ 2</ion-label>
+    <ion-select [(ngModel)]="Raw2" (ionChange) = "changeRaw2()" name="Raw2">
+      <ion-select-option class = "font" *ngFor="let menu of  RawMaterialList " value = "{{menu.id}}">{{menu.name}}</ion-select-option>
       </ion-select>
   </ion-item>
   
   <ion-item>
-    <ion-label>เนื้อสัตว์ 3</ion-label>
+    <ion-label class = "font">เนื้อสัตว์ 3</ion-label>
   
-    <ion-select [(ngModel)]="Raw3" name="Raw3">
-      <ion-select-option *ngFor="let menu of  RawMaterialList " value = "{{menu.name}}">{{menu.name}}</ion-select-option>
+    <ion-select [(ngModel)]="Raw3" (ionChange) = "changeRaw3()" name="Raw3">
+      <ion-select-option class = "font" *ngFor="let menu of  RawMaterialList " value = "{{menu.id}}">{{menu.name}}</ion-select-option>
       </ion-select>
   </ion-item>
   <ion-card>
-  <ion-grid>
   <ion-row>
-  <ion-col>
-  <div float-left >
-    <ion-label [(ngModel)] = "foodname" name = "foodname" ngDefaultControl>
-     {{foodname.name}}
-  </ion-label>
-  </div>
-  </ion-col>
-  <ion-col>
-  <div class="bp1">
-    <ion-button (click) = "onDecreaseMenu()"  size="small">-</ion-button>
-  </div>
-  </ion-col>
-  <div>
-   
-    <ion-label [(ngModel)] = "amountMenu" name = "amountMenu" ngDefaultControl>
-      {{amountMenu}}
-  </ion-label>
-  
-  </div>
-  <ion-col>
-      <div class="bp2">
-        <ion-button (click) = "onIncreaseMenu()" float-right size="small">+</ion-button>
-      </div>
-      </ion-col>
+  <ion-label class = "font3"> ธรรมดา &nbsp; </ion-label>
+ <ion-checkbox checked="true" [(ngModel)] = 'exFood' name = "exFood" ngDefaultControl></ion-checkbox> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+ <ion-label class = "font3">พิเศษ &nbsp; </ion-label>
+  <ion-checkbox ></ion-checkbox>
   </ion-row>
-  </ion-grid>
   </ion-card>
+
+  
   
   
   <ion-item>
-    <ion-label>เลือก Option</ion-label>
-    <ion-select [(ngModel)]="Option" name="Option">
-      <ion-select-option *ngFor="let menu of  RawMaterialList " value = "{{menu.name}}">{{menu.name}}</ion-select-option>
+    <ion-label class = "font" >เลือก Option</ion-label>
+    <ion-select [(ngModel)]="option" name="option">
+      <ion-select-option class = "font" *ngFor="let menu of  optionFoodLists " value = "{{menu.name}}">{{menu.name}}</ion-select-option>
       </ion-select>
   </ion-item>
   
@@ -88,7 +68,7 @@
         <ion-row>
         <ion-col>
         <div float-left >
-          <ion-label [(ngModel)] = "optionname" name = "optionname" ngDefaultControl>
+          <ion-label class = "font" [(ngModel)] = "optionname" name = "optionname" ngDefaultControl>
            {{optionname.name}}
         </ion-label>
         </div>
@@ -117,14 +97,44 @@
 <ion-card>
   <ion-item>
     <B>
-    <ion-label>ข้าวกระเพราไก่ปลาหมึกหมู่ไข่ดาว</ion-label>
+    <ion-label class = "font" [(ngModel)] = "fullnames" name = "fullnames"  ngDefaultControl> {{foodname[1]}} {{menuname[1]}} {{rawname1}} {{rawname2}} {{rawname3}} </ion-label>
     </B>
   </ion-item>
 </ion-card>  
-
+<ion-card>
+  <ion-grid>
+  <ion-row>
+  <ion-col>
+  <div float-left >
+    <ion-label class = "font" [(ngModel)] = "foodname" name = "foodname" ngDefaultControl>
+     {{foodname.name}}
+  </ion-label>
+  </div>
+  </ion-col>
+  <ion-col>
+  <div class="bp1">
+    <ion-button (click) = "onDecreaseMenu()"  size="small">-</ion-button>
+  </div>
+  </ion-col>
+  <div>
+   
+    <ion-label [(ngModel)] = "amountMenu" name = "amountMenu" ngDefaultControl>
+      {{amountMenu}}
+  </ion-label>
+  
+  </div>
+  <ion-col>
+      <div class="bp2">
+        <ion-button (click) = "onIncreaseMenu()" float-right size="small">+</ion-button>
+      </div>
+      </ion-col>
+  </ion-row>
+  </ion-grid>
+  </ion-card>
 <ion-card>
     <ion-item>
-       <ion-label> ขอเผ็ดๆ</ion-label>
+       <ion-label class = "font"  >Note : </ion-label>
+       <ion-textarea [(ngModel)] = "note" name = "note" ngDefaultControl placeholder="ขอเผ็ด ๆ , ไม่เอาผัก , อื่น ๆ"></ion-textarea>
     </ion-item>
 </ion-card>
 
@@ -133,6 +143,11 @@
 
 
        <div class="btl">
-          <ion-button expand="full" (click) = "closePage()" > ยืนยัน </ion-button>
+          <ion-row >
+          <ion-button class = "font" expand="full" (click) = "saveResult()" > ยืนยัน </ion-button>
+          <div class="btl2">
+          <ion-button class = "font" expand="full" (click) = "closePage()" > ย้อนกลับ </ion-button>
+          </div>
+          </ion-row>
         </div>
 

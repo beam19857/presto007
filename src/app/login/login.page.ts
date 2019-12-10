@@ -43,7 +43,7 @@ export class LoginPage implements OnInit {
     //   alert("email or password not found");
     //   console.error(err);
     // }
-    this.nav.navigateForward('/home') ;
+    this.nav.navigateForward('/main') ;
 
   }
 

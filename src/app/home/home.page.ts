@@ -9,7 +9,8 @@ import {ActivatedRoute} from '@angular/router';
 import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs';
 import {map} from 'rxjs/operators'
-
+import {globalVariable} from "../globalVariable"
+import {Events} from '@ionic/angular';
 
 
 
@@ -39,15 +40,30 @@ export class HomePage  {
   marketKey01;
   marketKey02;
   marketKey03;
+  //===============checkOrderlist=================
+  orderOnm1 ;
+
+  //================================
 
 
-  constructor(private db: AngularFireDatabase,private activateRoute:ActivatedRoute,private Rout : Router,private HomeService : HomeServiceService,private modelController : ModalController ) {
+  constructor(private db: AngularFireDatabase,
+    private activateRoute:ActivatedRoute,
+    private Rout : Router,
+    private HomeService : HomeServiceService,
+    private modelController : ModalController ,
+    public events : Events ,
+    public globalVar : globalVariable) {
     this.baskets0 = db.list('/baskets'); //ดึงมาแสดง
       this.baskets1 = this.baskets0.snapshotChanges().pipe(
         map(changes => 
           changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
         )
       );
+      events.subscribe('updateOrderList', () => {
+        this.updateOrderList();
+      });
+        
+        //console.log(this.orderOnm1 )
 
 
   }
@@ -59,33 +75,13 @@ export class HomePage  {
 
   
   ngOnInit(){
+    
 
     this.dataUID = this.activateRoute.snapshot.paramMap.get('myids');
       console.log(this.dataUID);
       this.newBaskets.UID = this.dataUID;
 
-      this.market1 = {
-        id:'',
-        location:'',
-        name:'',
-        timeToClose:'',
-        timeToOpen:''
-      }
-      this.market2 = {
-        id:'',
-        location:'',
-        name:'',
-        timeToClose:'',
-        timeToOpen:''
-      }
-      this.market3 = {
-        id:'',
-        location:'',
-        name:'',
-        timeToClose:'',
-        timeToOpen:''
-      }
-
+      
 
       
       this.HomeService.getAccout().subscribe(
@@ -97,7 +93,7 @@ export class HomePage  {
           for(var i = 0; i < data.length; i++){
             this.marketlist1.push(data[i]);
             
-            console.log((data[i])); //here you'll get sendernewcall value for all entry
+            console.log((data[i].id)); //here you'll get sendernewcall value for all entry
             console.log(this.marketlist1);
           }
         }
@@ -120,7 +116,7 @@ export class HomePage  {
    console.log(this.key01);
     
    const model = await this.modelController.create({
-      component : ModelPagePage , 
+      component : ModelselectPage , 
       componentProps : {
       markets : this.market1,
       userID :  this.dataUID,
@@ -128,7 +124,8 @@ export class HomePage  {
       basketKey : this.key01
       }
    });
-   console.log(this.market1.id);
+  
+   console.log(this.market1);
    
    return await model.present();
   }
@@ -194,7 +191,13 @@ export class HomePage  {
     return firebase.database().ref('baskets/'+key+'/market').push(marketname).key
   }
 
-  addMenu
+  checkOrder(){ 
+      console.log(this.orderOnm1)
+  }
+  updateOrderList(){
+    console.log("update orderlist")
+    this.orderOnm1 = this.globalVar.Order.market1.orlderlist;
+  }
 
 
 }

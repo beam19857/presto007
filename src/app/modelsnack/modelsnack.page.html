@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-toolbar class="header01">
+    <ion-title>
+      เลือกอาหารทานเล่น
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<div class="sc01">
+  <ion-item>
+    <ion-label class = "font">เลือกประเภท</ion-label>
+      <ion-select >
+        <ion-select-option class = "font"></ion-select-option>
+      </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label class = "font">เลือกรายการ</ion-label>
+      <ion-select >
+        <ion-select-option class = "font"></ion-select-option>
+      </ion-select>
+  </ion-item>
+
+  <ion-card class = 'card02'>
+  <ion-row>
+  <ion-label class = "font3"> ธรรมดา &nbsp; </ion-label>
+ <ion-checkbox checked="true"></ion-checkbox> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+ <ion-label class = "font3">พิเศษ &nbsp; </ion-label>
+  <ion-checkbox ></ion-checkbox>
+  </ion-row>
+  </ion-card> 
+</div>
+
+<ion-card>
+<ion-item>
+    <ion-label class = "font">ส่วนเสริม 1</ion-label>
+      <ion-select >
+        <ion-select-option class = "font"></ion-select-option>
+      </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label class = "font">ส่วนเสริม 2</ion-label>
+      <ion-select >
+        <ion-select-option class = "font"></ion-select-option>
+      </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label class = "font">ส่วนเสริม 3</ion-label>
+      <ion-select >
+        <ion-select-option class = "font"></ion-select-option>
+      </ion-select>
+  </ion-item>  
+</ion-card>
+
+<ion-card>
+  <ion-grid>
+  <ion-row>
+  <ion-col>
+  <div float-left >
+    <ion-label class = "font" [(ngModel)] = "foodname" name = "foodname" ngDefaultControl>
+    
+  </ion-label>
+  </div>
+  </ion-col>
+  <ion-col>
+  <div class="bp1">
+    <ion-button (click) = "onDecreaseMenu()"  size="small">-</ion-button>
+  </div>
+  </ion-col>
+  <div>
+   
+    <ion-label [(ngModel)] = "amountMenu" name = "amountMenu" ngDefaultControl>
+      {{amountMenu}} 
+  </ion-label>
+  
+  </div>
+  <ion-col>
+      <div class="bp2">
+        <ion-button (click) = "onIncreaseMenu()" float-right size="small">+</ion-button>
+      </div>
+      </ion-col>
+  </ion-row>
+  </ion-grid>
+  </ion-card> 
+
+
+
+</ion-content>
+<div class="btl">
+          <ion-row >
+          <ion-button class = "font" expand="full" (click) = "closePage()" > ยืนยัน </ion-button>
+          <div class="btl2">
+          <ion-button class = "font" expand="full" (click) = "closePage()" > ย้อนกลับ </ion-button>
+          </div>
+          </ion-row>
+        </div>

@@ -19,41 +19,21 @@
         <div class="card02">
       <ion-card >
         <ion-item >
-            <ion-label>เลือกร้านอาหาร</ion-label>
+            <ion-label class = "font">เลือกร้านอาหาร</ion-label>
             <ion-select [(ngModel)]="market1" name="market1">
-              <ion-select-option *ngFor="let market of marketlist1" value = "{{market.id}}">{{market.name}}</ion-select-option>
+              <ion-select-option class = "font" *ngFor="let market of marketlist1" value = "{{market.id}}">{{market.name}}</ion-select-option>
             </ion-select>
-          </ion-item>
+            
+          </ion-item>       
         </ion-card>
-        <ion-label>
-          กระเพรา
-        </ion-label>
-        <br /> 
-        <ion-label>
-            กระเพรา
-          </ion-label>
-          <br /> 
-          <ion-label>
-              กระเพรา
+
+          <ion-label *ngFor="let item of orderOnm1">
+                  {{item.fullname}} <br /> 
             </ion-label>
-            <br /> 
-            <ion-label>
-                กระเพรา
-              </ion-label>
-              <br /> 
-              <ion-label>
-                  กระเพรา
-                </ion-label>
-                <br /> 
-                <ion-label>
-                    กระเพรา
-                  </ion-label>
-                  <br /> 
-                  <ion-label>
-                      กระเพรา
-                    </ion-label>
+
+       
         <div class="btl">
-          <ion-button expand="full" (click) = "openModel1()" >เพิ่มอาหาร</ion-button>
+          <ion-button class = "font" expand="full" (click) = "openModel1()" >เพิ่มอาหาร</ion-button>
         </div>
         </div>
       </ion-card>
@@ -65,9 +45,9 @@
           <div class="card02">
         <ion-card >
           <ion-item >
-              <ion-label>เลือกร้านอาหาร</ion-label>
+              <ion-label class = "font">เลือกร้านอาหาร</ion-label>
               <ion-select [(ngModel)] = "market2" name = "market2">
-                <ion-select-option *ngFor="let market of marketlist1" value = "{{market.name}}">{{market.name}}</ion-select-option>
+                <ion-select-option class = "font" *ngFor="let market of marketlist1" value = "{{market.name}}">{{market.name}}</ion-select-option>
                 
               </ion-select>
             </ion-item>
@@ -100,7 +80,7 @@
                           กระเพรา
                         </ion-label>
           <div class="btl">
-          <ion-button expand="full" (click) = "openModel2()" >เพิ่มอาหาร</ion-button>
+          <ion-button class = "font" expand="full" (click) = "openModel2()" >เพิ่มอาหาร</ion-button>
         </div>
           </div>
         </ion-card>
@@ -111,42 +91,16 @@
             <div class="card02">
           <ion-card >
             <ion-item >
-                <ion-label>เลือกร้านอาหาร</ion-label>
+                <ion-label class = "font" >เลือกร้านอาหาร</ion-label>
                 <ion-select [(ngModel)] = "market3" name = "market3">
-                  <ion-select-option *ngFor="let market of marketlist1" value = "{{market.name}}">{{market.name}}</ion-select-option>
+                  <ion-select-option class = "font" *ngFor="let market of marketlist1" value = "{{market.name}}">{{market.name}}</ion-select-option>
                   
                 </ion-select>
               </ion-item>
             </ion-card>
-            <ion-label>
-                กระเพรา
-              </ion-label>
-              <br /> 
-              <ion-label>
-                  กระเพรา
-                </ion-label>
-                <br /> 
-                <ion-label>
-                    กระเพรา
-                  </ion-label>
-                  <br /> 
-                  <ion-label>
-                      กระเพรา
-                    </ion-label>
-                    <br /> 
-                    <ion-label>
-                        กระเพรา
-                      </ion-label>
-                      <br /> 
-                      <ion-label>
-                          กระเพรา
-                        </ion-label>
-                        <br /> 
-                        <ion-label>
-                            กระเพรา
-                          </ion-label>
+           
             <div class="btl">
-          <ion-button  expand="full"  (click) = "openModel3()" >เพิ่มอาหาร</ion-button>
+          <ion-button class = "font"  expand="full"  (click) = "openModel3()" >เพิ่มอาหาร</ion-button>
           
         </div>
             </div>
@@ -166,6 +120,6 @@
   </ion-content>
 
   <div class="buttonAl">
-    <ion-button expand="full" >ยืนยัน</ion-button>
+    <ion-button (click) = "checkOrder()" expand="full" >ยืนยัน</ion-button>
     
   </div>

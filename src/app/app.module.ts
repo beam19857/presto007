@@ -6,6 +6,8 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { ModelPagePageModule } from './model-page/model-page.module';
+import {ModeldrinkPageModule} from './modeldrink/modeldrink.module'
+import {ModelsnackPageModule} from './modelsnack/modelsnack.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
@@ -18,6 +20,13 @@ import { LoginPageModule } from './login/login.module';
 import { HttpModule } from '@angular/http';
 import {AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { ModelfruitPageModule } from './modelfruit/modelfruit.module';
+import { ModelbuffonePageModule } from './modelbuffone/modelbuffone.module';
+import { ModelbufftwoPageModule } from './modelbufftwo/modelbufftwo.module';
+import { ModelgrillPageModule } from './modelgrill/modelgrill.module';
+import { globalVariable } from './globalVariable';
+
+
 
 
 
@@ -40,6 +49,12 @@ const config = {
     AppRoutingModule,
     HttpClientModule,
     ModelPagePageModule,
+    ModeldrinkPageModule,
+    ModelsnackPageModule,
+    ModelfruitPageModule,
+    ModelbuffonePageModule,
+    ModelbufftwoPageModule,
+    ModelgrillPageModule,
     FormsModule,
     SelectSearchableModule,
     IonicSelectableModule,
@@ -49,15 +64,13 @@ const config = {
     LoginPageModule,
     HttpModule,
     AngularFireDatabaseModule,
-    
-  
-  
   ],
   providers: [
     StatusBar,
+    globalVariable,
     SplashScreen,
     AngularFirestore,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy , useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
 })

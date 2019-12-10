@@ -1,3 +1,32 @@
+.header01{
+    --background:#EC6C1F;
+    --color:#FFF;
+    font-family: 'Prompt', sans-serif;
+
+}
+.font{
+    font-family: 'Prompt', sans-serif;
+}
+.buttonAl{
+    
+    ion-button{
+        --background : rgba(248, 28, 28, 0.76);
+     
+    }
+    font-family: 'Prompt', sans-serif;
+}
+.font3{
+    font-family: 'Prompt', sans-serif;
+    font-size: 20px;
+    font-size-adjust: 10px;
+}
+.card02{
+    font-family: 'Prompt', sans-serif;
+    ion-card{
+        height: 100px    ;   
+    }
+    text-align: center;
+}
 .btl{
     ion-button{
         --background : #289c19;
@@ -35,34 +64,4 @@
        --border-radius: 300px; 
     }
     font-family: 'Prompt', sans-serif;
-}
-
-.header01{
-        --background:#EC6C1F;
-        --color:#FFF;
-        font-family: 'Prompt', sans-serif;
-}
-.sc010{
-    
-    height : 500px;
-    font-family: 'Prompt', sans-serif;
-
-}
-.sc02{
-    width : 140px;
-    font-family: 'Prompt', sans-serif;
-   
-    
-}
-.font{
-    font-family: 'Prompt', sans-serif;
-}
-.font2{
-    --background:rgba(236, 31, 31, 0.822);
-    font-family: 'Prompt', sans-serif;
-}
-.font3{
-    font-family: 'Prompt', sans-serif;
-    font-size: 20px;
-    font-size-adjust: 10px;
 }

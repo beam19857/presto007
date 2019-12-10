@@ -16,12 +16,13 @@ export class MainPage implements OnInit {
   constructor(private Rout : Router,private activateRoute:ActivatedRoute,private nav : NavController,private fAuth : AngularFireAuth) { }
 
   ngOnInit() {
-      this.dataUID = this.activateRoute.snapshot.paramMap.get('myid');
+    //  this.dataUID = this.activateRoute.snapshot.paramMap.get('myid');
       console.log(this.dataUID);
   }
 
   onAddorder(){
-    this.Rout.navigate(['home',this.dataUID]);
+   // this.Rout.navigate(['home',this.dataUID]);
+   this.nav.navigateForward('/home') ;
     
   }
 
